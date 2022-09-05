@@ -3,5 +3,5 @@
 > ### My student resgistration: **UP210553**
 > ### This is my first job!
 > ### *CPP project*
-> ![Error al cargar imagen](/Documentos/AJMG/UP210553_CPP/Imagenes/rdr2.jpg)"Portada Red dead redemption 2"
+> ![Error al cargar imagen](https://github.com/UP210553/UP210553_CPP/blob/main/Imagenes/rdr2.jpg)"Portada Red dead redemption 2"
 
