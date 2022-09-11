@@ -1,7 +1,10 @@
-> # Welcome to my first REPO
-> ### My username: **Gyza_1820**
-> ### My student resgistration: **UP210553**
-> ### This is my first job!
-> ### *CPP project*
-> ![Error al cargar imagen](https://github.com/UP210553/UP210553_CPP/blob/main/Imagenes/rdr2.jpg)"Portada Red dead redemption 2"
+> # **GYZA REPOSITORY**
+> ## **Username**: Gyza_1820
+> ## **Student resgistration**: UP210553
+> ## **Student portfolio**
+> # <center>  **CPP project**
+> ![Error al cargar imagen](https://github.com/UP210553/UP210553_CPP/blob/main/Imagenes/c_logo.png "C++ logo")
+  ## To clone this repo introduce this command on your console
+> ### git clone https://github.com/UP210553/UP210553_CPP.git
+
 
