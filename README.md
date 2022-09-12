@@ -10,7 +10,7 @@
   # **To clone this repo introduce this command on your console**
 > ## git clone https://github.com/UP210553/UP210553_CPP.git
 # **You can find me here**
-> <center> ([<img alt="Error" width="40px" src="https://github.com/UP210553/UP210553_CPP/blob/main/Imagenes/ig_logo.png" />](https://www.instagram.com/gyza_mtz/) [<img alt="Error" width="40px" src="https://github.com/UP210553/UP210553_CPP/blob/main/Imagenes/Steam_icon_logo.svg.png" />]( https://steamcommunity.com/id/Gyza1820/) [<img alt="Error" width="40px" src="https://github.com/UP210553/UP210553_CPP/blob/main/Imagenes/linkedin%20logo.png" />](www.linkedin.com/in/Gyza1820))
+> [<img alt="Error" width="40px" src="https://github.com/UP210553/UP210553_CPP/blob/main/Imagenes/ig_logo.png" />](https://www.instagram.com/gyza_mtz/) [<img alt="Error" width="40px" src="https://github.com/UP210553/UP210553_CPP/blob/main/Imagenes/Steam_icon_logo.svg.png" />]( https://steamcommunity.com/id/Gyza1820/) [<img alt="Error" width="40px" src="https://github.com/UP210553/UP210553_CPP/blob/main/Imagenes/linkedin%20logo.png" />](www.linkedin.com/in/Gyza1820)
 
 
 
