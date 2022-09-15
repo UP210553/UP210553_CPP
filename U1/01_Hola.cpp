@@ -13,7 +13,7 @@ Last modification:
 //------------MAIN FUNCTION----------------//
 int main(){
     //Print on screen a text
-    std::cout<<"Hello World!" ;
+    std::cout<<"Hello World!" << std:: endl;
 
     // Return 0 means that the programm ends succesfully
     return 0;
