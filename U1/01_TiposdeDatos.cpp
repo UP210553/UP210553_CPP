@@ -13,7 +13,7 @@ int main()
     int entero = 4;
     float flotante = 2.565465654654;
     double grande = 2.565465654654;
-    char caracter = 64;
+    char caracter = 36;
     
     cout << "Este programa muestra los tipos de datos. \n";
     cout << "El número entero es: " << entero << endl;
