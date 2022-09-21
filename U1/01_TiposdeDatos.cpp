@@ -17,14 +17,14 @@ int main()
     
     cout << "Este programa muestra los tipos de datos. \n";
     cout << "El número entero es: " << entero << endl;
-    cout << "El tamaño del entero es: " << sizeof(entero) << "bytes" << endl;
+    cout << "El tamaño del entero es: " << sizeof(entero) << " bytes" << endl;
     cout << "El número flotante es: " << flotante << endl;
-    cout << "El tamaño del flotante es: " << sizeof(flotante)<< "bytes" << endl;
+    cout << "El tamaño del flotante es: " << sizeof(flotante)<< " bytes" << endl;
     cout << "El número double es: " << grande << endl;
-    cout << "El tamaño del double es: " << sizeof(grande)<< "bytes" << endl;
+    cout << "El tamaño del double es: " << sizeof(grande)<< " bytes" << endl;
     cout << "El caracter char es: " << caracter << endl;
-    cout << "El tamaño del char es: " << sizeof(caracter)<< "byte" << endl;
+    cout << "El tamaño del char es: " << sizeof(caracter)<< " byte" << endl;
     
-    cout << "=================" << endl;
+    cout << "==========================================" << endl;
     return 0;
     }
