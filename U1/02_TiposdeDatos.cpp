@@ -2,6 +2,7 @@
    Autor: Ángel de Jesús Martínez Guevara
    Fecha: 18/09/2022
    Descripción: Muestra los diferentes tipos de datos en c++
+   Última modificación: 21/09/2022
 */
 
 #include <iostream>
