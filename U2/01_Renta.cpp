@@ -16,17 +16,21 @@ pantalla el tipo impositivo que le corresponde.
 
 Last modification: 23/09/2022
 */
-
+// INCLUIMOS LA LIBRERIA IOSTREAM PARA USO DE ENTRADA Y SALIDA
 #include <iostream>
+// MARCAMOS EL USO DE STD PARA NO TENER QUE PONER STD::COUT EN CADA LINEA
 using namespace std;
- 
+// ABRIMOS NUESTRA FUNCION MAIN 
 int main(){
+    // DECLARACION DE VARIABLES
     int renta, porcentaje;
     float impuestoAPAgar;
-
+    // PEDIMOS LA INFORMACION AL USUARIO
     cout<<"Introduce el costo de tu renta: "<<endl;
+    // GUARDAMOS LA INFO INTRODUCIDA POR EL USUARIO
     cin>>renta;
 
+    // CONDICIONES PARA SABER CON QUE HACER EL CALCULO 
     if (renta<10000){
         porcentaje=5;
     }
@@ -43,10 +47,11 @@ int main(){
         porcentaje=45 ;
     }
     impuestoAPAgar=renta*porcentaje/100;
+    //SALIDAS PARA EL USUARIO
     cout<<"El porcentaje impuesto es de: "<<porcentaje<<" %"<<endl;
     cout<<"El impuesto a pagar es de: "<<impuestoAPAgar<<" $"<<endl;
 
-
+    //RETORNO DE LA FUNCION 
     return 0;
 
 }
