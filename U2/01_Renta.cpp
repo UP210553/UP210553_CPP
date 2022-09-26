@@ -48,8 +48,8 @@ int main(){
     }
     impuestoAPAgar=renta*porcentaje/100;
     //SALIDAS PARA EL USUARIO
-    cout<<"El porcentaje impuesto es de: "<<porcentaje<<" %"<<endl;
-    cout<<"El impuesto a pagar es de: "<<impuestoAPAgar<<" $"<<endl;
+    cout<<"El porcentaje impuesto es de: "<<porcentaje<<"%"<<endl;
+    cout<<"El impuesto a pagar es de: $"<<impuestoAPAgar<<endl;
 
     //RETORNO DE LA FUNCION 
     return 0;
