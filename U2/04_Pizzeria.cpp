@@ -18,14 +18,14 @@ Last modification: 28/09/2022
 using namespace std;
 
 int main(){
-    int tipoDePizza;
+    int tipoDePizza, ingredientesVeggie, ingrdientesNotVeggie;
 
 
     cout<<"Do you want a vegetarian pizza: \n 1=Yes 0=No \n =";
     cin>>tipoDePizza;
     if (tipoDePizza=1){
         cout<<"These are the ingredients available: \n You only can pick one. Remember all the pizzas have mozzarella and tomato sauce. \n 1.Tofu 2.Peppers"<<endl;
-        
+        cout<<"Enter the number of the ingredient ";
 
     }
 
