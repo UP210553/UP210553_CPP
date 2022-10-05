@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-    int cantidadDeProductos, contador = 0;
+    int cantidadDeProductos;
     float precioDeProducto, totalFactura=0;
     do
     {
