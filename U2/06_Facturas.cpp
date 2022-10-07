@@ -3,9 +3,9 @@ Date: 05/10/2022
 Author: Ángel de Jesús Martínez Guevara
 Email: up210553@alumnos.upa.edu.mx
 Description:
-Hacer un programa en el que se ingresen 6 temperaturas y determine el promedio, la mas
-baja y la mas alta
-Last modification: 05/10/2022
+Realizar un programa que lea indefinidamente cantidades de productos y su precio, y al final
+indique el total de la factura. Para saber que se ha terminado con la compra, se deberáingresar un 0 en la cantidad.
+Last modification: 07/10/2022
 */
 #include <iostream>
 using namespace std;
