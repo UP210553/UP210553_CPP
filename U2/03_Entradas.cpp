@@ -9,14 +9,18 @@ precio de la entrada. Si el cliente es menor de 4 años puede entrar gratis, si 
 $5 y si es mayor de 18 años, $10.
 Last modification: 28/09/2022
 */
+//Library and use of std declaration
 #include <iostream>
 using namespace std;
 
+// Main function and variables declaration
 int main(){
     int costoEntrada, edad; 
 
+    // Data entry
     cout<<"How is the age of the client? "<<endl;
     cin>>edad;
+    // Code Process
     if (edad<0){
         cout<<"Check the data entered please"<<endl;
 
@@ -31,6 +35,7 @@ int main(){
         if (edad>18){
             costoEntrada=10;
         }
+    // Data output
     cout<<"The coste of the ticket is= $"<<costoEntrada<<endl;
     }
 

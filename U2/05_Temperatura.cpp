@@ -7,9 +7,10 @@ Hacer un programa en el que se ingresen 6 temperaturas y determine el promedio, 
 baja y la mas alta
 Last modification: 03/10/2022
 */
+//Library and use of std declaration
 #include <iostream>
 using namespace std;
-
+// Main function and variables declaration
 int main()
 {
     int contador = 0;
@@ -17,8 +18,10 @@ int main()
 
     do
     {
+        // Data entry
         cout << "Give me the temperature: ";
         cin >> temperatura;
+        // Code Process
         tempAcum += temperatura;
         contador++;
         if (temperatura >= tempMayor)
@@ -30,6 +33,7 @@ int main()
             tempMenor = temperatura;
         }
     } while (contador < 6);
+    // Data output
     cout << "The average of temperature is: " << tempAcum / 6 << "°C" << endl;
     cout << "The lower temperature is: " << tempMenor << "°C" << endl;
     cout << "The highest temperature is: " << tempMayor << "°C" << endl;
