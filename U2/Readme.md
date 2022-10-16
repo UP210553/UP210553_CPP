@@ -509,7 +509,7 @@
 >### 3. Print the multiplication table up to the limit number entered.
 >## **Tests.**
 >### A) Number: 2 Limit: 10
-> <img src="../Imagenes/P8_01.png" align="center" height="150" width="700"/>
+> <img src="../Imagenes/P8_01.png" align="center" height="300" width="700"/>
 > 
 >
 
