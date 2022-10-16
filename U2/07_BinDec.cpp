@@ -38,7 +38,7 @@ int main()
         else
         {
             // Data output
-            cout << "ERROR. Please enter an integrer different to zero " << endl;
+            cout << "ERROR. Please enter an integrer greater than zero " << endl;
         }
     } while (decimal != 0);
     // Data output
