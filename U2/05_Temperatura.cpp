@@ -21,7 +21,7 @@ int main()
         // Data entry
         cout << "Give me the temperature: ";
         cin >> temperatura;
-        // Code Process
+        // Data processing
         tempAcum += temperatura;
         contador++;
         if (temperatura >= tempMayor)

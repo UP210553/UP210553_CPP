@@ -20,22 +20,21 @@ así como la cantidad de dinero que recibirá el usuario.
 *¡Muchas gracias por preferirnos! Esperamos poder servirte nuevamente.
 Last modification: 26/09/2022
 */
-//We include the library of iostream to use the inputs and outputs 
+//Library and use of std declaration
 #include <iostream>
-//Declaramos uso de nombre std para evitar el std:: en cada linea 
 using namespace std;
 
-//Iniciamos función principal
+//Main function and variables declaration
 int main(){
-    //Declaramos variables
     float  beneficios;
     double calificacion;
-    //Inicio del programa pidiendo datos al usuario
+    // Data entry
     cout<<"Enter your rating: "<<endl;
     cin>>calificacion;
-    //Función de comparación
+    // Code Process
     if (calificacion==0.0||calificacion==0.4||calificacion>=0.6&&calificacion<=1){
         beneficios= 2400*calificacion;
+        // Data output
         cout<<"Your rate is: "<<calificacion<<endl;
         cout<<"Your benefit will be: $"<<beneficios<<endl;
     }
@@ -43,6 +42,6 @@ int main(){
         cout<<"Error: Try again, please your rating correctly.  "<<endl;
     }
     
-    //Retorno de la función a cero    
+    //Function return to 0 
     return 0;
 }

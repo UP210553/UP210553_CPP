@@ -7,17 +7,21 @@ Realice un programa que realice la conversión de binario a decimal, solo para n
 enteros mayores a 0. El resultado puede ser mostrado mediante una variable entera o en unconjunto de caracteres
 Last modification: 10/10/2022
 */
+//Library and use of std declaration
 #include <iostream>
 using namespace std;
 
+// Main function and variables declaration
 int main()
 {
     int decimal;
     string resultado;
     do
     {
+        // Data entry
         cout << "Enter the integrer you want to convert to binary: ";
         cin >> decimal;
+        // Data processing
         if (decimal > 0)
         {
             while (decimal > 0)
@@ -28,13 +32,16 @@ int main()
         }
         else if (decimal == 0)
         {
+            // Data output
             cout << "Your result is: 0" << endl;
         }
         else
         {
+            // Data output
             cout << "ERROR. Please enter an integrer different to zero " << endl;
         }
     } while (decimal != 0);
+    // Data output
     cout << "Your result is: " << resultado << endl;
 
     return 0;

@@ -23,6 +23,7 @@ int main(){
     cin>>a;
     cout<<"Give me your (b) value: ";
     cin>>b;
+    if(ya)
     
 
     return 0;

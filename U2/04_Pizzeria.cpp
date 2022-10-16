@@ -26,7 +26,7 @@ int main()
     // Data entry
     cout << "Do you want a vegetarian pizza: \n 1=Yes 0=No  \n =";
     cin >> tipoDePizza;
-    // Code Process
+    // Data processing
     if (tipoDePizza == 1)
     {
         cout << "These are the ingredients available for the vegetarian pizza: \n You only can pick one. Remember all the pizzas have mozzarella and tomato sauce. \n 1.Tofu 2.Peppers " << endl;

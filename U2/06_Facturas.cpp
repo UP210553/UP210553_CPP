@@ -21,7 +21,7 @@ int main()
         // Data entry
         cout << "How many products were sold: ";
         cin >> cantidadDeProductos;
-        // Code Process
+        // Data processing
         if (cantidadDeProductos != 0)
         {
             cout << "Introduce the price of the product: $";
