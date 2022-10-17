@@ -11,20 +11,33 @@ Last modification: 13/10/2022
 using namespace std;
 
 float resolverEcuacion(float valor){
-    return pow(valor, 2) + 4 * valor + 8;
+    return pow(valor, 2) + valor - 6;
 }
 
 int main(){
     int iterador=1;
-    float a, b, c=(a+b)/2;
-    float ya= resolverEcuacion(a), yb = resolverEcuacion(b), yc = resolverEcuacion(c);
-
+    float a, b, c, error = 0.01, ya , yb, yc; 
     cout<<"Give me your (a) value: ";
     cin>>a;
     cout<<"Give me your (b) value: ";
     cin>>b;
-    if(ya)
-    
+    do{ 
+        iterador++;
+        c = (a+b)/2;
+        ya= resolverEcuacion(a), yb = resolverEcuacion(b), yc = resolverEcuacion(c);
+        if(ya*yc < 0){
+            b=c;
+        }
+        else if((yc*yb) < 0){
+            a=c;
+        }
+        for(int u; u < 160; u++){
+            cout<<"-";
+            cout<<endl;
+        }
+        cout<<c<<endl;
+    }while(abs(yc) >= error);
+
 
     return 0;
 }
