@@ -8,6 +8,7 @@ Last modification: 13/10/2022
 */
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 
 float resolverEcuacion(float valor){
@@ -15,29 +16,87 @@ float resolverEcuacion(float valor){
 }
 
 int main(){
-    int iterador=1;
-    float a, b, c, error = 0.01, ya , yb, yc; 
+    float a, b, c, error = 0.01, ya , yb, yc, equality=1; 
     cout<<"Give me your (a) value: ";
     cin>>a;
     cout<<"Give me your (b) value: ";
     cin>>b;
-    do{ 
-        iterador++;
-        c = (a+b)/2;
-        ya= resolverEcuacion(a), yb = resolverEcuacion(b), yc = resolverEcuacion(c);
-        if(ya*yc < 0){
-            b=c;
-        }
-        else if((yc*yb) < 0){
-            a=c;
-        }
-        for(int u; u < 160; u++){
-            cout<<"-";
-            cout<<endl;
-        }
-        cout<<c<<endl;
-    }while(abs(yc) >= error);
+    for (int line = 0; line <= 160; line++)
+    {
+        cout << "-";
+    }
+    cout << endl;
 
+    cout << "|\t\t"
+         << "#Iteracion\t\t\t"
+         << "a\t\t\t"
+         << "b\t\t\t"
+         << "c\t\t\t"
+         << "ya\t\t\t"
+         << "yb\t\t\t"
+         << "yc\t\t\t"
+         << "|" << endl;
+    for (int line = 0; line <= 160; line++)
+    {
+        cout << "-";
+    }
+    cout << endl;
+
+    cout << "|\t\t"
+         << "a\t\t\t"
+         << "b\t\t\t"
+         << "c\t\t\t"
+         << "ya\t\t\t"
+         << "yb\t\t\t"
+         << "yc\t\t\t"
+         << "|" << endl;
+
+    for (int line = 0; line <= 160; line++)
+    {
+        cout << "-";
+    }
+    cout << endl;
+
+    do
+    {
+        c = (a + b) / 2;
+        ya = resolverEcuacion(a);
+        yc = resolverEcuacion(c);
+        yb = resolverEcuacion(b);
+
+        cout << "|\t\t" << fixed << setprecision(8) << a << "\t\t" << b << "\t\t" << c << "\t\t" << ya << "\t\t" << yb << "\t\t" << yc << "\t\t|" << endl;
+
+        if ((ya * yc) < 0)
+        {
+            b = c;
+        }
+        else
+        {
+            a = c;
+        }
+
+        if (a == b)
+        {
+            equality = 0;
+            break;
+        }
+
+        for (int line = 0; line <= 160; line++)
+        {
+            cout << "-";
+        }
+        cout << endl;
+
+    } while ((yc >= 0.01) || (yc <= -0.01));
+
+    if (equality == 0)
+    {
+        cout << "There is no root" << endl;
+    }
+    else
+    {
+        cout << "The root of the equation is " << lround(c) << endl;
+    }
 
     return 0;
 }
