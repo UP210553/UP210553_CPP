@@ -16,26 +16,13 @@ float resolverEcuacion(float valor){
 }
 
 int main(){
-    float a, b, c, error = 0.01, ya , yb, yc, equality=1; 
+    float a, b, c, error = 0.01, ya , yb, yc, equality=1;
+    //Data entry 
     cout<<"Give me your (a) value: ";
     cin>>a;
     cout<<"Give me your (b) value: ";
     cin>>b;
-    for (int line = 0; line <= 160; line++)
-    {
-        cout << "-";
-    }
-    cout << endl;
-
-    cout << "|\t\t"
-         << "#Iteracion\t\t\t"
-         << "a\t\t\t"
-         << "b\t\t\t"
-         << "c\t\t\t"
-         << "ya\t\t\t"
-         << "yb\t\t\t"
-         << "yc\t\t\t"
-         << "|" << endl;
+    //Data processing
     for (int line = 0; line <= 160; line++)
     {
         cout << "-";
@@ -91,10 +78,12 @@ int main(){
 
     if (equality == 0)
     {
+        //Data output
         cout << "There is no root" << endl;
     }
     else
     {
+        //Data output
         cout << "The root of the equation is " << lround(c) << endl;
     }
 

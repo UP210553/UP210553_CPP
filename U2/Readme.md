@@ -515,20 +515,102 @@
 
 # **9. Bisection method:**
 >## **What does it request?** 
->###
+>### A program that throught the bisection method shows us the root of the ecuation.
 >## **Input.**
 ```c++
-
+    //Data entry 
+    cout<<"Give me your (a) value: ";
+    cin>>a;
+    cout<<"Give me your (b) value: ";
+    cin>>b;
 ```
 >## **Process.**
 ```c++
+//Data processing
+    for (int line = 0; line <= 160; line++)
+    {
+        cout << "-";
+    }
+    cout << endl;
 
+    cout << "|\t\t"
+         << "a\t\t\t"
+         << "b\t\t\t"
+         << "c\t\t\t"
+         << "ya\t\t\t"
+         << "yb\t\t\t"
+         << "yc\t\t\t"
+         << "|" << endl;
+
+    for (int line = 0; line <= 160; line++)
+    {
+        cout << "-";
+    }
+    cout << endl;
+
+    do
+    {
+        c = (a + b) / 2;
+        ya = resolverEcuacion(a);
+        yc = resolverEcuacion(c);
+        yb = resolverEcuacion(b);
+
+        cout << "|\t\t" << fixed << setprecision(8) << a << "\t\t" << b << "\t\t" << c << "\t\t" << ya << "\t\t" << yb << "\t\t" << yc << "\t\t|" << endl;
+
+        if ((ya * yc) < 0)
+        {
+            b = c;
+        }
+        else
+        {
+            a = c;
+        }
+
+        if (a == b)
+        {
+            equality = 0;
+            break;
+        }
+
+        for (int line = 0; line <= 160; line++)
+        {
+            cout << "-";
+        }
+        cout << endl;
+
+    } while ((yc >= 0.01) || (yc <= -0.01));
+
+    if (equality == 0)
+    {
+        //Data output
+        cout << "There is no root" << endl;
+    }
+    else
+    {
+        //Data output
+        cout << "The root of the equation is " << lround(c) << endl;
+    }
 ```
 >## **Output.**
 ```c++
-
+    //Data output
+    cout << "There is no root" << endl;
+    cout << "The root of the equation is " << lround(c) << endl;
 ```
 >## **Explanation.**
->###
+>### 1. Ask the user for the range (a and b).
+>### 2. Obtain the point c.
+>### 3. Get the y-values when its value is a, b and c.
+>### 4. If the Y(c) value is greater than or equal to 0.01 or less than or equal to -0.01 enter a while loop.
+>>### 4.1 Enter an If to select half.
+>>### 4.2 if ((ya * yc) < 0) then b=c, otherwise a=c.
+>>### 4.3 Get the y values with the new values.
+>>### 4.4 When Y(c) is between 0.01 and -0.01 exit the while.
+>### 5. Print the root if there is
+ 
 >## **Tests.**
->###
+>### A) When the root is within the established range.
+> <img src="../Imagenes/P9_01.png" align="center"> 
+> 
+>### B) When the root don't be in that range.
+> <img src="../Imagenes/P9_02.png" align="center"> 
