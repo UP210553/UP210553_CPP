@@ -73,3 +73,10 @@ void obtenerCambio (int monto){
         } 
         }
 }
+void obtenerMonedas(int feria){
+
+}
+void imprimirCambio(int imprimir){
+    (imprimir=1)?cout<<"$500: "<<quinientos<<endl : cout<<"--MONEDAS--"<<endl;
+    
+}
