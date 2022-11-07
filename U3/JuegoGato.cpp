@@ -21,7 +21,6 @@ int main(){
  seleccionarJugada();
  comprobarCasillaOcupada();
 }
-
 int seleccionarJugada(){
     do{
         cout<<"Give me your play: ";
