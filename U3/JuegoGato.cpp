@@ -42,6 +42,9 @@ return 0;
 
 
 
+ generarTableroGato();
+ seleccionarJugada();
+ comprobarCasillaOcupada(jugada);
 }
 int seleccionarJugada(){
     do
@@ -185,3 +188,6 @@ void generarTableroGato(){
         cout<<endl;
     }
 } 
+void colocarJugada(int){
+    
+}
