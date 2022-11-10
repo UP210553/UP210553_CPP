@@ -9,42 +9,28 @@ Last modification: 28/10/2022
 #include <iostream>
 
 using namespace std;
-int jugada, turno, x, y;
+int jugada, turno = 0, x, y;
 char areaJuego[3][3]={'1','2','3','4','5','6','7','8','9'};
 char tableroGato[6][11];
 void generarTableroGato();
 bool comprobarCasillaOcupada(int);
 int seleccionarJugada();
 void colocarJugada(bool);
+bool verificarGanador(int);
 int main(){
 
- //generarTableroGato();
- //seleccionarJugada();
- //comprobarCasillaOcupada();
-
-int j = seleccionarJugada();
-
-
-    bool test = comprobarCasillaOcupada(j);
-    cout << test << endl;
-
-    if (j==0)
-    {
+    
+    do
+    {   
+        generarTableroGato();
+        int j = seleccionarJugada();
+        bool test = comprobarCasillaOcupada(j);
+        colocarJugada(test);
         turno++;
-    }
-    else{
-        turno=turno;
-    }
+    } while (turno < 10);
 
 
-
-return 0;
-
-
-
- generarTableroGato();
- seleccionarJugada();
- comprobarCasillaOcupada(jugada);
+    return 0;
 }
 int seleccionarJugada(){
     do
@@ -171,9 +157,11 @@ void colocarJugada(bool j){
         if (turno %2 == 0)
             {
                 areaJuego[x][y]='X';
+                turno++;
             }
             else{
                 areaJuego[x][y]='O';
+                turno++;
             }
     }
 }
@@ -188,6 +176,3 @@ void generarTableroGato(){
         cout<<endl;
     }
 } 
-void colocarJugada(int){
-    
-}
