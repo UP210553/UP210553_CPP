@@ -10,35 +10,35 @@ Last modification: 28/10/2022
 
 using namespace std;
 
-void llenarMatriz();
-void imprimirMatriz();
-int matriz[5][5];
+void llenarareaJuego();
+void imprimirareaJuego();
+int areaJuego[5][5];
 int main(){
 
-    llenarMatriz();
-    imprimirMatriz();
+    llenarareaJuego();
+    imprimirareaJuego();
 return 0;
 }
 
-void llenarMatriz(){
+void llenarareaJuego(){
     for (int row = 0; row < 5; row++)
     {
         for (int col = 0; col < 5; col++)
         {
             cout<<"Enter your value for ["<<row<<"] "<<"["<<col<<"] : ";
-            cin>>matriz[row][col];
+            cin>>areaJuego[row][col];
         }
 
     }
     
     
 };
-void imprimirMatriz(){
+void imprimirareaJuego(){
     for (int row = 0; row < 5; row++)
     {
         for (int col = 0; col < 5; col++)
         {
-            cout<<matriz[row][col]<<" ";
+            cout<<areaJuego[row][col]<<" ";
         }
         cout<<endl;
     }
