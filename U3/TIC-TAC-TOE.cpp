@@ -38,7 +38,7 @@ int main()
             generatePlayArea();
             do
             {
-                cout<<endl;
+                cout << endl;
                 int j = enterPlay();
                 system("cls");
                 busybox = checkBusyBox(j);
@@ -72,7 +72,7 @@ int main()
             {
                 if (turn % 2 == 0)
                 {
-                    cout<<endl;
+                    cout << endl;
                     int j = enterPlay();
                     system("cls");
                     busybox = checkBusyBox(j);
@@ -83,7 +83,9 @@ int main()
                     }
                     else
                     {
-                        cout << "Busy box, choose another please " << endl;
+                        cout << "\033[0;31m"
+                             << "Busy box, choose another please "
+                             << "\033[0m" << endl; 
                     }
                     generatePlayArea();
                     victory = verifyWinner();
@@ -124,7 +126,7 @@ int main()
 
                 cout << endl;
                 cout << "\033[0;36m"
-                     << "Tie"
+                     << "Draw"
                      << "\033[0m" << endl;
             }
             else if (victory == true)
@@ -166,7 +168,7 @@ int generateMenu()
     cout << "Gamemode 2: "
          << "\tPlayer VS PC " << endl;
     cout << endl;
-    cout << "Choose gamemode (number): ";
+    cout << "Choose the gamemode (number): ";
     cin >> gameMode;
     system("cls");
     return gameMode;
@@ -259,7 +261,7 @@ void generatePlayArea()
 {
     int x = 0, y = 0;
     cout << "\033[0;35m"
-         << "\tTIC TAC TOE" 
+         << "\tTIC TAC TOE"
          << "\033[0m"
          << endl;
     cout << endl;
@@ -328,14 +330,14 @@ bool verifyWinner()
         {
             cout << "\033[0;36m"
                  << "Victory player 1"
-                 << "\033[0m";
+                 << "\033[0m"<<endl;
             return true;
         }
         else
         {
             cout << "\033[0;32m"
                  << "Victory player 2"
-                 << "\033[0m";
+                 << "\033[0m"<<endl;
             return true;
         }
     }
