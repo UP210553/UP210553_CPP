@@ -11,170 +11,265 @@ Last modification: 20/11/2022
 #include <time.h>
 
 using namespace std;
-int jugada, turno = 0, x, y;
-char areaJuego[3][3] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-char matrizCopiada[3][3] = {};
-void generarTableroGato();
-bool comprobarCasillaOcupada(int);
-int seleccionarJugada();
-void colocarJugada();
-bool verificarGanador();
-void clonarTablero();
+int play, turn = 0, x, y;
+char playArea[3][3] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+char copiedMatrix[3][3] = {};
+
+void generatePlayArea();
+bool checkBusyBox(int);
+int enterPlay();
+void placePlay();
+bool verifyWinner();
+void cloneBoard();
 bool checkVictoryPc();
 bool avoidVictoryPlayerPc();
 void generateRandomNumberPc();
-int generarMenu();
+int generateMenu();
 
 int main()
 {
     int gamemode;
-    bool victoria=false;
-    gamemode = generarMenu();
-    if (gamemode == 1)
-    {
-        do
-        {
-            generarTableroGato();
-            int j = seleccionarJugada();
-            bool test = comprobarCasillaOcupada(j);
-            colocarJugada();
-            victoria = verificarGanador(); 
-            turno++;
-            system("cls");
-            if (turno > 9)
-            {
-                cout << "-----DRAW-----";
-            }
-            
-        } while (turno <= 9 && victoria == false);
-    }
-    else if (gamemode == 2)
-    {
-        
-    }
-    else
-    {
-         cout << "\033[0;31m" << "Invalid gamemode" << "\033[0m" << endl;
-    }
-    
-    
-    
-   
-    return 0;
-}
-int generarMenu()
-{
-    
-    int gameMode;
-
-    cout << endl;
-    cout << "Menu" << endl;
-    cout << "Gamemode 1:   Player 1 vs Player 2" << endl;
-    cout << "Gamemode 2:   Player 1 vs CPU" << endl;
-    cout << endl;
-    cout << "Choose gamemode: ";
-    cin >> gameMode;
-    system("cls");
-
-    if (gameMode == 1)
-    {
-        return 1;
-    }
-    else if (gameMode == 2)
-    {
-        return 2;
-    }
-    else
-    {
-        return 3;
-    }
-}
-int seleccionarJugada()
-{
-    
+    bool busybox = false, victory = false, victoryPC = false, avoidDefeat = false;
     do
     {
-        cout << "Give me your play: ";
-        cin >> jugada;
-        if (jugada < 1 || jugada > 9)
+        gamemode = generateMenu();
+        if (gamemode == 1)
         {
-            cout << "\033[0;31m" << "Please enter a valid play" << "\033[0m"<< endl;
+            generatePlayArea();
+            do
+            {
+                cout<<endl;
+                int j = enterPlay();
+                system("cls");
+                busybox = checkBusyBox(j);
+                if (busybox == false)
+                {
+                    placePlay();
+                    turn++;
+                }
+                else
+                {
+                    cout << "Busy box, choose another please " << endl;
+                }
+                generatePlayArea();
+                victory = verifyWinner();
+
+            } while ((turn < 9) && (victory == false));
+            if ((turn = 9) && (victory == false))
+            {
+                system("cls");
+                generatePlayArea();
+                cout << endl;
+                cout << "\033[0;36m"
+                     << "-----DRAW-----"
+                     << "\033[0m" << endl;
+            }
         }
-        
-    } while (jugada < 1 || jugada > 9);
-    return jugada;
-}
-bool comprobarCasillaOcupada(int jugada)
-{
-    if (jugada == 1)
-    {
-        x = 0;
-        y = 0;
-    }
-    else if (jugada == 2)
-    {
-        x = 0;
-        y = 1;
-    }
-    else if (jugada == 3)
-    {
-        x = 0;
-        y = 2;
-    }
-    else if (jugada == 4)
-    {
-        x = 1;
-        y = 0;
-    }
-    else if (jugada == 5)
-    {
-        x = 1;
-        y = 1;
-    }
-    else if (jugada == 6)
-    {
-        x = 1;
-        y = 2;
-    }
-    else if (jugada == 7)
-    {
-        x = 2;
-        y = 0;
-    }
-    else if (jugada == 8)
-    {
-        x = 2;
-        y = 1;
-    }
-    else
-    {
-        x = 2;
-        y = 2;
-    }
-    if (areaJuego[x][y] == 'X' || areaJuego[x][y] == 'O')
+        else if (gamemode == 2)
         {
-            cout << "Casilla ocupada elije otra";
-            return true;
+            generatePlayArea();
+            do
+            {
+                if (turn % 2 == 0)
+                {
+                    cout<<endl;
+                    int j = enterPlay();
+                    system("cls");
+                    busybox = checkBusyBox(j);
+                    if (busybox == false)
+                    {
+                        placePlay();
+                        turn++;
+                    }
+                    else
+                    {
+                        cout << "Busy box, choose another please " << endl;
+                    }
+                    generatePlayArea();
+                    victory = verifyWinner();
+                }
+                else
+                {
+                    cloneBoard();
+                    victoryPC = checkVictoryPc();
+                    if (victoryPC == true)
+                    {
+                        break;
+                    }
+
+                    else
+                    {
+                        avoidDefeat = avoidVictoryPlayerPc();
+
+                        if (avoidDefeat == false)
+                        {
+                            generateRandomNumberPc();
+                        }
+
+                        else
+                        {
+                            system("cls");
+                        }
+                    }
+                    system("cls");
+                    generatePlayArea();
+                    turn++;
+                }
+
+            } while ((turn < 9) && (victory == false && victoryPC == false));
+            system("cls");
+            generatePlayArea();
+            if ((turn == 9) && (victory == false && victoryPC == false))
+            {
+
+                cout << endl;
+                cout << "\033[0;36m"
+                     << "Tie"
+                     << "\033[0m" << endl;
+            }
+            else if (victory == true)
+            {
+                cout << endl;
+                cout << "\033[0;32m"
+                     << "Win"
+                     << "\033[0m" << endl;
+            }
+            else
+            {
+                cout << endl;
+                cout << "\033[0;31m"
+                     << "Game over"
+                     << "\033[0m" << endl;
+            }
         }
         else
         {
-            return false;
+            cout << "\033[0;31m"
+                 << "Invalid gamemode"
+                 << "\033[0m" << endl;
         }
+    } while (gamemode != 1 && gamemode != 2);
+
+    system("PAUSE");
+
+    return 0;
 }
-void colocarJugada()
+int generateMenu()
 {
-    if (turno % 2 == 0)
+
+    int gameMode;
+
+    cout << endl;
+    cout << "\t\tMENU" << endl;
+    cout << "Gamemode 1: "
+         << "\tPlayer VS Player " << endl;
+    cout << "Gamemode 2: "
+         << "\tPlayer VS PC " << endl;
+    cout << endl;
+    cout << "Choose gamemode (number): ";
+    cin >> gameMode;
+    system("cls");
+    return gameMode;
+}
+int enterPlay()
+{
+
+    do
     {
-        areaJuego[x][y] = 'X';
+        cout << "Give me your play: ";
+        cin >> play;
+        if (play < 1 || play > 9)
+        {
+            cout << "\033[0;31m"
+                 << "Please enter a valid play"
+                 << "\033[0m" << endl;
+        }
+
+    } while (play < 1 || play > 9);
+    return play;
+}
+bool checkBusyBox(int play)
+{
+    if (play == 1)
+    {
+        x = 0;
+        y = 0;
+    }
+    else if (play == 2)
+    {
+        x = 0;
+        y = 1;
+    }
+    else if (play == 3)
+    {
+        x = 0;
+        y = 2;
+    }
+    else if (play == 4)
+    {
+        x = 1;
+        y = 0;
+    }
+    else if (play == 5)
+    {
+        x = 1;
+        y = 1;
+    }
+    else if (play == 6)
+    {
+        x = 1;
+        y = 2;
+    }
+    else if (play == 7)
+    {
+        x = 2;
+        y = 0;
+    }
+    else if (play == 8)
+    {
+        x = 2;
+        y = 1;
     }
     else
     {
-        areaJuego[x][y] = 'O';
+        x = 2;
+        y = 2;
+    }
+    if (playArea[x][y] == 'X' || playArea[x][y] == 'O')
+    {
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
-void generarTableroGato()
+void placePlay()
+{
+    if (turn % 2 == 0)
+    {
+        playArea[x][y] = 'X';
+    }
+    else
+    {
+        playArea[x][y] = 'O';
+    }
+}
+void generatePlayArea()
 {
     int x = 0, y = 0;
+    cout << "\033[0;35m"
+         << "\tTIC TAC TOE" 
+         << "\033[0m"
+         << endl;
+    cout << endl;
+    cout << "\033[0;36m"
+         << "Player 1 (X)\t"
+         << "\033[0m";
+    cout << "\033[0;32m"
+         << "Player 2 (O)"
+         << "\033[0m" << endl;
+    cout << endl;
     for (int row = 0; row < 5; row++)
     {
         for (int col = 0; col < 9; col++)
@@ -185,17 +280,17 @@ void generarTableroGato()
             }
             else if (col == 1 || col == 4 || col == 7)
             {
-                if (areaJuego[x][y] == 'X')
+                if (playArea[x][y] == 'X')
                 {
-                    cout << "\033[0;34m" << areaJuego[x][y] << "\033[0m";
+                    cout << "\033[0;36m" << playArea[x][y] << "\033[0m";
                 }
-                else if (areaJuego[x][y] == 'O')
+                else if (playArea[x][y] == 'O')
                 {
-                    cout << "\033[0;31m" << areaJuego[x][y] << "\033[0m";
+                    cout << "\033[0;32m" << playArea[x][y] << "\033[0m";
                 }
                 else
                 {
-                    cout << areaJuego[x][y];
+                    cout << playArea[x][y];
                 }
 
                 y++;
@@ -218,28 +313,28 @@ void generarTableroGato()
         y = 0;
     }
 }
-bool verificarGanador()
+bool verifyWinner()
 {
-    if ((areaJuego[0][0] == areaJuego[0][1] && areaJuego[0][0] == areaJuego[0][2]) ||
-        (areaJuego[1][0] == areaJuego[1][1] && areaJuego[1][0] == areaJuego[1][2]) ||
-        (areaJuego[2][0] == areaJuego[2][1] && areaJuego[2][0] == areaJuego[2][2]) ||
-        (areaJuego[0][0] == areaJuego[1][0] && areaJuego[0][0] == areaJuego[2][0]) ||
-        (areaJuego[0][1] == areaJuego[1][1] && areaJuego[0][1] == areaJuego[2][1]) ||
-        (areaJuego[0][2] == areaJuego[1][2] && areaJuego[0][2] == areaJuego[2][2]) ||
-        (areaJuego[0][0] == areaJuego[1][1] && areaJuego[0][0] == areaJuego[2][2]) ||
-        (areaJuego[0][2] == areaJuego[1][1] && areaJuego[0][2] == areaJuego[2][0]))
+    if ((playArea[0][0] == playArea[0][1] && playArea[0][0] == playArea[0][2]) ||
+        (playArea[1][0] == playArea[1][1] && playArea[1][0] == playArea[1][2]) ||
+        (playArea[2][0] == playArea[2][1] && playArea[2][0] == playArea[2][2]) ||
+        (playArea[0][0] == playArea[1][0] && playArea[0][0] == playArea[2][0]) ||
+        (playArea[0][1] == playArea[1][1] && playArea[0][1] == playArea[2][1]) ||
+        (playArea[0][2] == playArea[1][2] && playArea[0][2] == playArea[2][2]) ||
+        (playArea[0][0] == playArea[1][1] && playArea[0][0] == playArea[2][2]) ||
+        (playArea[0][2] == playArea[1][1] && playArea[0][2] == playArea[2][0]))
     {
-        if (areaJuego[x][y] == 'X')
+        if (playArea[x][y] == 'X')
         {
-            cout << "\033[0;32m"
-                 << "Victoria player 1"
+            cout << "\033[0;36m"
+                 << "Victory player 1"
                  << "\033[0m";
             return true;
         }
         else
         {
-            cout << "\033[0;33m"
-                 << "Victoria player 2"
+            cout << "\033[0;32m"
+                 << "Victory player 2"
                  << "\033[0m";
             return true;
         }
@@ -248,17 +343,15 @@ bool verificarGanador()
     {
         return false;
     }
-
-
 }
-void clonarTablero()
+void cloneBoard()
 {
 
     for (int row = 0; row < 3; row++)
     {
         for (int col = 0; col < 3; col++)
         {
-            matrizCopiada[row][col] = areaJuego[row][col];
+            copiedMatrix[row][col] = playArea[row][col];
         }
     }
 }
@@ -270,12 +363,12 @@ bool checkVictoryPc()
 
         bool busyPlay, victory;
 
-        busyPlay = comprobarCasillaOcupada(playNumber);
+        busyPlay = checkBusyBox(playNumber);
 
         if (busyPlay == false)
         {
-            areaJuego[x][y] = 'O';
-            victory = verificarGanador();
+            playArea[x][y] = 'O';
+            victory = verifyWinner();
             if (victory == true)
             {
                 return true;
@@ -283,7 +376,7 @@ bool checkVictoryPc()
             }
             else
             {
-                areaJuego[x][y] = matrizCopiada[x][y];
+                playArea[x][y] = copiedMatrix[x][y];
             }
         }
     }
@@ -297,21 +390,21 @@ bool avoidVictoryPlayerPc()
     for (int playNumber = 1; playNumber <= 9; playNumber++)
     {
 
-        busyPlay = comprobarCasillaOcupada(playNumber);
+        busyPlay = checkBusyBox(playNumber);
 
         if (busyPlay == false)
         {
-            areaJuego[x][y] = 'X';
-            victory = verificarGanador();
+            playArea[x][y] = 'X';
+            victory = verifyWinner();
             if (victory == true)
             {
-                areaJuego[x][y] = 'O';
+                playArea[x][y] = 'O';
                 return true;
                 break;
             }
             else
             {
-                areaJuego[x][y] = matrizCopiada[x][y];
+                playArea[x][y] = copiedMatrix[x][y];
             }
         }
     }
@@ -328,11 +421,11 @@ void generateRandomNumberPc()
         srand(time(NULL));
         random = 1 + rand() % 9 - 1 + 1;
 
-        busyPlay = comprobarCasillaOcupada(random);
+        busyPlay = checkBusyBox(random);
 
         if (busyPlay == false)
         {
-            areaJuego[x][y] = 'O';
+            playArea[x][y] = 'O';
         }
         else
         {
