@@ -21,9 +21,9 @@ int enterPlay();
 void placePlay();
 bool verifyWinner();
 void cloneBoard();
-bool checkVictoryPc();
-bool avoidVictoryPlayerPc();
-void generateRandomNumberPc();
+bool generateBestMoveForPC();
+bool avoidPlayerWin();
+void generateRandomPlay();
 int generateMenu();
 
 int main()
@@ -93,7 +93,7 @@ int main()
                 else
                 {
                     cloneBoard();
-                    victoryPC = checkVictoryPc();
+                    victoryPC = generateBestMoveForPC();
                     if (victoryPC == true)
                     {
                         break;
@@ -101,11 +101,11 @@ int main()
 
                     else
                     {
-                        avoidDefeat = avoidVictoryPlayerPc();
+                        avoidDefeat = avoidPlayerWin();
 
                         if (avoidDefeat == false)
                         {
-                            generateRandomNumberPc();
+                            generateRandomPlay();
                         }
 
                         else
@@ -133,14 +133,14 @@ int main()
             {
                 cout << endl;
                 cout << "\033[0;32m"
-                     << "Win"
+                     << "Winner"
                      << "\033[0m" << endl;
             }
             else
             {
                 cout << endl;
                 cout << "\033[0;31m"
-                     << "Game over"
+                     << "Game over, LOSER"
                      << "\033[0m" << endl;
             }
         }
@@ -164,9 +164,9 @@ int generateMenu()
     cout << endl;
     cout << "\t\tMENU" << endl;
     cout << "Gamemode 1: "
-         << "\tPlayer VS Player " << endl;
+         << "\tPvP " << endl;
     cout << "Gamemode 2: "
-         << "\tPlayer VS PC " << endl;
+         << "\tPvsPC " << endl;
     cout << endl;
     cout << "Choose the gamemode (number): ";
     cin >> gameMode;
@@ -260,6 +260,7 @@ void placePlay()
 void generatePlayArea()
 {
     int x = 0, y = 0;
+    cout << endl;
     cout << "\033[0;35m"
          << "\tTIC TAC TOE"
          << "\033[0m"
@@ -357,7 +358,7 @@ void cloneBoard()
         }
     }
 }
-bool checkVictoryPc()
+bool generateBestMoveForPC()
 {
 
     for (int playNumber = 1; playNumber <= 9; playNumber++)
@@ -384,7 +385,7 @@ bool checkVictoryPc()
     }
     return false;
 }
-bool avoidVictoryPlayerPc()
+bool avoidPlayerWin()
 {
 
     bool busyPlay, victory;
@@ -412,7 +413,7 @@ bool avoidVictoryPlayerPc()
     }
     return false;
 }
-void generateRandomNumberPc()
+void generateRandomPlay()
 {
 
     bool busyPlay = true;
