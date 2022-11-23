@@ -164,6 +164,7 @@
 
 ># **CONCLUSIONS OF THE EXCERCISE**
 </div>
+
 <<### This project personally demanded a lot of my self-learning skills since most of the problems had to be solved by myself or thanks to the help of my colleagues, which for me was a huge advantage since "team" work helped me to solve many doubts, in a matter of complexity I feel that it was complex but nothing that some research and a lot of work could not achieve, it was a great experience of how to work in a good way and following specific conditions in addition to a great job to further develop my logic.
 <div align="right">
 
