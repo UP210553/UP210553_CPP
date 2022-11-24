@@ -15,13 +15,13 @@ Description:
 
 // Namespace avoid using std:: on all input and output
 using namespace std;
-void tablaro();
+void buildBoard();
 //-----------MAIN FUNTION---------
 int main()
 {
     return 0;
 }
 
-void tablero(){
+void buildBoard(){
     
 }
