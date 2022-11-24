@@ -28,6 +28,8 @@ int main()
 void buildBoard(){
 
     cout<<"holiiiiiiiiiiiiiiiii";
+
+    cout<<"adiosssssssssss";
     
 }
 
@@ -40,3 +42,4 @@ for (int i = 0; i < 10; i++){
 cout<< endl;
 
 }
+
