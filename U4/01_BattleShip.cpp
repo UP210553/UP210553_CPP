@@ -17,6 +17,7 @@ Description:
 using namespace std;
 void buildBoard();
 void creartablero();
+void imprimirjugadas();
 
 char matriz[10][10];
 //-----------MAIN FUNTION---------
@@ -28,8 +29,6 @@ int main()
 void buildBoard(){
 
     cout<<"holiiiiiiiiiiiiiiiii";
-
-    cout<<"adiosssssssssss";
     
 }
 
@@ -39,7 +38,13 @@ for (int i = 0; i < 10; i++){
         matriz[i][l] = 0;
     }
 }
-cout<< endl;
-
 }
 
+void imprimirjugada(){
+    for (int i = 0; i < 10; i++){
+    for (int l = 0; l < 10; l++){
+        cout << matriz[i][l];
+    }
+    cout << endl;
+}
+}
