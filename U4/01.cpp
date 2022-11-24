@@ -8,7 +8,6 @@ Emails: up210894@alumnos.upa.edu.mx
         up210188@alumnos.upa.edu.mx
 Description:  
 -----Problem-----
-
 */
 
 // Preprocessor directives
@@ -16,9 +15,13 @@ Description:
 
 // Namespace avoid using std:: on all input and output
 using namespace std;
-
+void tablaro();
 //-----------MAIN FUNTION---------
 int main()
 {
     return 0;
+}
+
+void tablero(){
+    
 }
