@@ -35,7 +35,7 @@ void buildBoard(){
 void creartablero(){
 for (int i = 0; i < 10; i++){
     for (int l = 0; l < 10; l++){
-        matriz[i][l] = 0;
+        matriz[i][l] = '°';
     }
 }
 }
