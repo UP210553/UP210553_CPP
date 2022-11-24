@@ -26,6 +26,8 @@ int main()
 }
 
 void buildBoard(){
+
+    cout<<"holiiiiiiiiiiiiiiiii";
     
 }
 
@@ -37,5 +39,3 @@ for (int i = 0; i < 10; i++){
 }
 
 }
-
-
