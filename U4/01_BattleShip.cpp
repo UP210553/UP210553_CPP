@@ -16,6 +16,9 @@ Description:
 // Namespace avoid using std:: on all input and output
 using namespace std;
 void buildBoard();
+void creartablero();
+
+char matriz[10][10];
 //-----------MAIN FUNTION---------
 int main()
 {
@@ -25,3 +28,14 @@ int main()
 void buildBoard(){
     
 }
+
+void creartablero(){
+for (int i = 0; i < 10; i++){
+    for (int l = 0; l < 10; l++){
+        matriz[i][l] = 0;
+    }
+}
+
+}
+
+
