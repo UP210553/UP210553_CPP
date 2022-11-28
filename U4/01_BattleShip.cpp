@@ -23,28 +23,7 @@ char matriz[10][10];
 //-----------MAIN FUNTION---------
 int main()
 {
+    
     return 0;
 }
 
-void buildBoard(){
-
-    cout<<"holiiiiiiiiiiiiiiiii";
-    
-}
-
-void creartablero(){
-for (int i = 0; i < 10; i++){
-    for (int l = 0; l < 10; l++){
-        matriz[i][l] = '°';
-    }
-}
-}
-
-void imprimirjugada(){
-    for (int i = 0; i < 10; i++){
-    for (int l = 0; l < 10; l++){
-        cout << matriz[i][l];
-    }
-    cout << endl;
-}
-}
