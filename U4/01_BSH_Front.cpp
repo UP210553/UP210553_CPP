@@ -14,10 +14,14 @@ Description:
 using namespace std;
 
 void CrearTablero();
+void gotoxy(int x,int y);
 
 int main()
 {
 CrearTablero();
+gotoxy(50,20);
+cout<<"\033[0;34"<<"HOLIIIIIIIIII"<<"\033[o"<<endl;
+
         return 0;
 }
 
@@ -138,4 +142,9 @@ void CrearTablero()
 
                 cout<<endl;
         }
+}
+
+void gotoxy(int x ,int y){
+
+        cout<<"\033["<<y<<","<<x<<"f";
 }
