@@ -19,22 +19,22 @@ void gotoxy(int x,int y);
 int main()
 {
 
-for (int x = 70; x >20; x--)
+for (int x = 70; x >10; x--)
 {
 system("clear");
-gotoxy(x,3);                 
+gotoxy(x,1);                 
 cout<<"              __'__     __'__      __'__"<<endl;
-gotoxy(x,4);
+gotoxy(x,2);
 cout<<"             /    /    /    /     /    /"<<endl;
-gotoxy(x,5);
+gotoxy(x,3);
 cout<<"            /____/    /____/     /____/  "<<endl;
-gotoxy(x,6);
+gotoxy(x,4);
 cout<<"          / ___|___   ___|___    ___|___ "<<endl;
-gotoxy(x,7);
+gotoxy(x,5);
 cout<<"        // (      (  (      (   (      ("<<endl;
-gotoxy(x,8);
+gotoxy(x,6);
 cout<<"      / /  (______(  (______(   (______("<<endl;
-gotoxy(x,9);
+gotoxy(x,7);
 cout<<"    /  /   ____|_____ ___|______ ____|_____"<<endl;
 /*
          /   /   /         //         //         /
