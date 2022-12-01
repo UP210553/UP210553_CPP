@@ -9,7 +9,7 @@ Emails: up210894@alumnos.upa.edu.mx
 Description:
 -----Problem-----
 */
-
+#include <unistd.h>
 #include <iostream>
 using namespace std;
 
@@ -18,9 +18,40 @@ void gotoxy(int x,int y);
 
 int main()
 {
-CrearTablero();
-gotoxy(50,20);
-cout<<"\033[0;34"<<"HOLIIIIIIIIII"<<"\033[o"<<endl;
+
+for (int x = 70; x >20; x--)
+{
+system("clear");
+gotoxy(x,3);                 
+cout<<"              __'__     __'__      __'__"<<endl;
+gotoxy(x,4);
+cout<<"             /    /    /    /     /    /"<<endl;
+gotoxy(x,5);
+cout<<"            /____/    /____/     /____/  "<<endl;
+gotoxy(x,6);
+cout<<"          / ___|___   ___|___    ___|___ "<<endl;
+gotoxy(x,7);
+cout<<"        // (      (  (      (   (      ("<<endl;
+gotoxy(x,8);
+cout<<"      / /  (______(  (______(   (______("<<endl;
+gotoxy(x,9);
+cout<<"    /  /   ____|_____ ___|______ ____|_____"<<endl;
+/*
+         /   /   /         //         //         /
+      /    /   |         ||         ||         |
+     /_____/     \         \\         \\         \
+           \      \_________\\_________\\_________\
+            \         |          |         |
+             \________!__________!_________!________/
+              \|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_/|
+               \    _______________                /
+^^^%%%^%^^^%^%%^\_"/_)/_)_/_)__)/_)/)/)_)_"_'_"_//)/)/)/)%%%^^^%^^%%%%
+^!!^^"!%%!^^^!^^^!!^^^%%%%%!!!!^^^%%^^^!!%%%%^^^!!!!!!%%%^^^^%^^%%%^^^!*/ 
+
+usleep(100000);
+}
+
+
 
         return 0;
 }
@@ -146,5 +177,6 @@ void CrearTablero()
 
 void gotoxy(int x ,int y){
 
-        cout<<"\033["<<y<<","<<x<<"f";
+        cout<<"\033["<<y<<";"<<x<<"f";
 }
+
