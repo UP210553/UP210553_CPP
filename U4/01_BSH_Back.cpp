@@ -137,9 +137,49 @@ bool comprobarsieltamanodelbarcoesvalido()
 
 bool permitirbarco()
 {
-    if (barcos2 == 0 && barcos3 == 0 && barcos4 == 0 && barcos5 == 0)
+    if (t == 2)
     {
-        return false;
+        if (barcos2 == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    else if (t == 3)
+    {
+        if (barcos3 == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    else if (t == 4)
+    {
+        if (barcos4 == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    else if (t == 5)
+    {
+        if (barcos5 == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
     else
     {
@@ -151,10 +191,10 @@ bool preguntardondecolocarjugada()
 {
 
     cout << "Coloque jugada de inicio" << endl;
-    cout << "y: ";
-    cin >> y;
     cout << "x: ";
     cin >> x;
+    cout << "y: ";
+    cin >> y;
     x = x - 1;
     y = y - 1;
     if (x < 10 && x >= 0 && y < 10 && y >= 0)
@@ -178,7 +218,7 @@ int orientacioncolocarjugada()
     cout << "3 = derecha" << endl;
     cout << "4 = izquierda" << endl;
 
-    cout << "Ingrese la orinetacion: ";
+    cout << "Ingrese la orientacion: ";
     cin >> orientacion;
     return orientacion;
 }
@@ -305,7 +345,7 @@ bool comprobarsilascasillasestanocupadas(int orientacion)
     {
         do
         {
-            x1--;
+            x1++;
             if (matriz[y][x1] == 1)
             {
                 desocupada = true;
