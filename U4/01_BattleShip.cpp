@@ -1,29 +1,1795 @@
 /*
-Date: 
+Date:
 Authors: Enrique Abel Herrera Vargas
          Angel de Jesús Martínez Guevara
          Osvaldo Esparza Gutierrez
 Emails: up210894@alumnos.upa.edu.mx
         up210553@alumnos.upa.edu.mx
         up210188@alumnos.upa.edu.mx
-Description:  
+Description:
 -----Problem-----
 */
 
-// Preprocessor directives
 #include <iostream>
+#include <unistd.h>
+#include <stdalign.h>
+#include <time.h>
 
 // Namespace avoid using std:: on all input and output
 using namespace std;
-void buildBoard();
-void creartablero();
-void imprimirjugadas();
 
-char matriz[10][10];
 //-----------MAIN FUNTION---------
+void gotoxy(int x, int y);
+void menu();
+void tablero();
+// void imprimirtablero();
+bool preguntardondecolocarjugada();
+int orientacioncolocarjugada();
+bool comprobarsilaorientacionesvalida(int orientacion);
+void colocarbarco(int orintacion);
+void elegirbarcos();
+bool comprobarsieltamanodelbarcoesvalido();
+bool comprobarsilascasillasestanocupadas(int orientacion);
+void conteobarcos();
+bool permitirbarco();
+void CrearTablero();
+void tableroJ1();
+void definirorientacionJ1();
+void definirpocicionJ1();
+bool comprobarsilascasillasestanocupadasJ1();
+void colocarbarcoJ1();
+
+// Jugador 2
+void tableroJ2();
+void definirorientacionJ2();
+void definirpocicionJ2();
+bool comprobarsilascasillasestanocupadasJ2();
+void colocarbarcoJ2();
+bool atacarBarcos();
+void preguntardondeatacar();
+bool generarnumeroataque();
+void decirquebarcotiraste();
+
+int matriz[10][10];
+int matrizJ1[10][10];
+int tamanodelbarcoJ1[5] = {2, 3, 3, 4, 5};
+int matrizJ2[10][10];
+int tamanodelbarcoJ2[5] = {2, 3, 3, 4, 5};
+int y, x;
+int yJ1, xJ1;
+int yJ2, xJ2;
+int t = 2;
+int t1;
+int numerodebarcos = 5;
+int numerodebarcosJ1 = 5;
+int numerodebarcosJ2 = 5;
+int numerodebarcosvivos = 17;
+int numerodebarcosvivosJ1 = 17;
+int numerodebarcosvivosJ2 = 17;
+int barcos2 = 1;
+int barcos3 = 2;
+int barcos4 = 1;
+int barcos5 = 1;
+int ya;
+int x1;
+int turno = 1;
+int orientacionJ1;
+int pociciontamanoJ1 = 0;
+int orientacionJ2;
+int pociciontamanoJ2 = 0;
+int turnodejugador = 1;
+int xatacar;
+int yatacar;
+bool golpeobarco;
+int numerodetablero;
+
+int mododejuego;
+int limitedetres = 1;
+
 int main()
 {
-    
+    int orientacion;
+    bool comprobar;
+    bool existejugada;
+    bool existebarco;
+    bool desocupada;
+    bool permitir;
+    bool desocupadaJ1;
+    bool desocupadaJ2;
+
+    menu();
+    do
+    {
+        // Eleccion de barcos jugador
+        if (mododejuego == 1)
+        {
+            do
+            {
+                numerodetablero = 3;
+                // Pruebas J1
+                // cout << tamanodelbarcoJ1[pociciontamanoJ1];
+                // definirorientacionJ1();
+                // definirpocicionJ1();
+                // cout << "h" << xJ1 <<yJ1;
+                // comprobarsilascasillasestanocupadasJ1();
+                // colocarbarcoJ1();
+                // tableroJ1();
+                // CrearTablero();
+
+                tablero();
+                CrearTablero();
+                elegirbarcos();
+                existebarco = comprobarsieltamanodelbarcoesvalido();
+                if (existebarco == true)
+                {
+                    permitir = permitirbarco();
+                    if (permitir == true)
+                    {
+                        existejugada = preguntardondecolocarjugada();
+                        if (existejugada == true)
+                        {
+                            orientacion = orientacioncolocarjugada();
+                            comprobar = comprobarsilaorientacionesvalida(orientacion);
+                            if (comprobar == true)
+                            {
+                                desocupada = comprobarsilascasillasestanocupadas(orientacion);
+                                if (desocupada == true)
+                                {
+                                    colocarbarco(orientacion);
+                                    conteobarcos();
+                                }
+                            }
+                        }
+                    }
+                }
+                system("clear");
+            } while (numerodebarcos > 0);
+            // imprimirtablero();
+            CrearTablero();
+            numerodetablero = 2;
+            do
+            {
+
+                definirorientacionJ2();
+                definirpocicionJ2();
+                desocupadaJ2 = comprobarsilascasillasestanocupadasJ2();
+                if (desocupadaJ2 == true)
+                {
+                    void ficharJ2();
+                    colocarbarcoJ2();
+                    pociciontamanoJ2++;
+                }
+            } while (numerodebarcosJ2 > 0);
+            tableroJ2();
+            cout << endl;
+            cout << endl;
+            cout << "Tablero jugador 2";
+            cout << endl;
+            CrearTablero();
+
+            do
+            {
+                if (turnodejugador == 1)
+                {
+                    preguntardondeatacar();
+                    golpeobarco = atacarBarcos();
+                    if (golpeobarco == true)
+                    {
+                        turnodejugador = 1;
+                    }
+                    else
+                    {
+                        turnodejugador = 2;
+                    }
+                }
+                else
+                {
+                    golpeobarco = generarnumeroataque();
+                    if (golpeobarco == true)
+                    {
+                        turnodejugador = 2;
+                    }
+                    else
+                    {
+                        turnodejugador = 1;
+                    }
+                }
+                system("clear");
+                numerodetablero = 3;
+                cout << endl;
+                cout << endl;
+                cout << "Tablero jugador";
+                cout << endl;
+                CrearTablero();
+                numerodetablero = 2;
+                cout << endl;
+                cout << endl;
+                cout << "Tablero jugador PC";
+                cout << endl;
+                CrearTablero();
+
+            } while (numerodebarcosvivos > 0 && numerodebarcosvivosJ2 > 0);
+        }
+        else if (mododejuego == 2)
+        {
+            turno = 2;
+            numerodetablero = 1;
+
+            // Crear tablero J1
+            do
+            {
+
+                definirorientacionJ1();
+                definirpocicionJ1();
+                desocupadaJ1 = comprobarsilascasillasestanocupadasJ1();
+                if (desocupadaJ1 == true)
+                {
+                    colocarbarcoJ1();
+                    pociciontamanoJ1++;
+                }
+            } while (numerodebarcosJ1 > 0);
+            tableroJ1();
+            cout << endl;
+            cout << endl;
+            cout << "Tablero jugador 1";
+            cout << endl;
+            CrearTablero();
+            turnodejugador = 2;
+            numerodetablero = 2;
+
+            // crear tablero 2
+            do
+            {
+
+                definirorientacionJ2();
+                definirpocicionJ2();
+                desocupadaJ2 = comprobarsilascasillasestanocupadasJ2();
+                if (desocupadaJ2 == true)
+                {
+                    colocarbarcoJ2();
+                    pociciontamanoJ2++;
+                }
+            } while (numerodebarcosJ2 > 0);
+            tableroJ2();
+            cout << endl;
+            cout << endl;
+            cout << "Tablero jugador 2";
+            cout << endl;
+            CrearTablero();
+            turnodejugador = 1;
+            do
+            {
+                if (turnodejugador == 1)
+                {
+                    preguntardondeatacar();
+                    golpeobarco = atacarBarcos();
+                    if (golpeobarco == true)
+                    {
+                        turnodejugador = 1;
+                    }
+                    else
+                    {
+                        turnodejugador = 2;
+                    }
+                }
+                else
+                {
+                    preguntardondeatacar();
+                    golpeobarco = atacarBarcos();
+                    if (golpeobarco == true)
+                    {
+                        turnodejugador = 2;
+                    }
+                    else
+                    {
+                        turnodejugador = 1;
+                    }
+                }
+                system("clear");
+                numerodetablero = 1;
+                cout << endl;
+                cout << endl;
+                cout << "Tablero jugador 1";
+                cout << endl;
+                CrearTablero();
+                numerodetablero = 2;
+                cout << endl;
+                cout << endl;
+                cout << "Tablero jugador 2";
+                cout << endl;
+                CrearTablero();
+                decirquebarcotiraste();
+            } while (numerodebarcosvivosJ1 > 0 && numerodebarcosvivosJ2 > 0);
+            system("clear");
+            if (numerodebarcosvivosJ1 < numerodebarcosvivosJ2)
+            {
+                cout << endl;
+                gotoxy(80, 25);
+                cout << "WIn PLayer 2";
+            }
+            else
+            {
+                cout << endl;
+                gotoxy(80, 25);
+                cout << "WIn PLayer 1";
+            }
+        }
+
+        else
+        {
+            cout << "PEMEX" << endl;
+        }
+    } while (mododejuego != 2 && mododejuego != 1);
     return 0;
 }
 
+void tablero()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            if (matriz[i][j] != 2 && matriz[i][j] != 3 && matriz[i][j] != 9 && matriz[i][j] != 4 && matriz[i][j] != 5)
+            {
+                matriz[i][j] = 1;
+            }
+        }
+    }
+}
+
+void CrearTablero()
+{
+    int x = 0;
+    int y = 0;
+
+    for (int row = 0; row < 23; row++)
+    {
+        for (int col = 0; col < 23; col++)
+        {
+            if (row % 2 == 0)
+            {
+                if (col % 2 == 0)
+                {
+
+                    cout << "\033[0;34m"
+                         << "+"
+                         << "\033[0m";
+                }
+
+                else
+                {
+                    cout << "\033[0;34m"
+                         << "---"
+                         << "\033[0m";
+                }
+            }
+            else
+            {
+                if (col % 2 == 0)
+                {
+
+                    cout << "\033[0;34m"
+                         << "|"
+                         << "\033[0m";
+                }
+                else if (row == 1 && col == 1)
+                {
+                    cout << " X ";
+                }
+
+                else if (row == 1 && col == 3)
+                {
+                    cout << " 1 ";
+                }
+                else if (row == 1 && col == 5)
+                {
+                    cout << " 2 ";
+                }
+                else if (row == 1 && col == 7)
+                {
+                    cout << " 3 ";
+                }
+                else if (row == 1 && col == 9)
+                {
+                    cout << " 4 ";
+                }
+                else if (row == 1 && col == 11)
+                {
+                    cout << " 5 ";
+                }
+                else if (row == 1 && col == 13)
+                {
+                    cout << " 6 ";
+                }
+                else if (row == 1 && col == 15)
+                {
+                    cout << " 7 ";
+                }
+                else if (row == 1 && col == 17)
+                {
+                    cout << " 8 ";
+                }
+                else if (row == 1 && col == 19)
+                {
+                    cout << " 9 ";
+                }
+                else if (row == 1 && col == 21)
+                {
+                    cout << " 10";
+                }
+                else if (row == 3 && col == 1)
+                {
+                    cout << " " << char(65) << " ";
+                }
+                else if (row == 5 && col == 1)
+                {
+                    cout << " B ";
+                }
+                else if (row == 7 && col == 1)
+                {
+                    cout << " C ";
+                }
+                else if (row == 9 && col == 1)
+                {
+                    cout << " D ";
+                }
+                else if (row == 11 && col == 1)
+                {
+                    cout << " E ";
+                }
+                else if (row == 13 && col == 1)
+                {
+                    cout << " F ";
+                }
+                else if (row == 15 && col == 1)
+                {
+                    cout << " G ";
+                }
+                else if (row == 17 && col == 1)
+                {
+                    cout << " H ";
+                }
+                else if (row == 19 && col == 1)
+                {
+                    cout << " I ";
+                }
+                else if (row == 21 && col == 1)
+                {
+                    cout << " J ";
+                }
+
+                else
+                {
+                    if (numerodetablero == 3)
+                    {
+                        cout << " " << matriz[x][y] << " ";
+                        //}
+                        x++;
+                        if (x == 10)
+                        {
+                            y++;
+                            x = 0;
+                        }
+                    }
+                    else
+                    {
+                        // if(matrizJ1[x][y] == 0){
+                        // cout<<" o ";
+                        //}
+                        // else{
+                        if (numerodetablero == 1)
+                        {
+
+                            cout << " " << matrizJ1[x][y] << " ";
+                            //}
+                            x++;
+                            if (x == 10)
+                            {
+                                y++;
+                                x = 0;
+                            }
+                        }
+
+                        else
+                        {
+                            cout << " " << matrizJ2[x][y] << " ";
+                            //}
+                            x++;
+                            if (x == 10)
+                            {
+                                y++;
+                                x = 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        cout << endl;
+    }
+}
+
+void elegirbarcos()
+{
+    cout << "Menu de barcos" << endl;
+    cout << barcos2 << "  Barco de tamaño dos" << endl;
+    cout << barcos3 << "  Barco de tamaño tres" << endl;
+    cout << barcos4 << "  Barco de tamaño cuatro" << endl;
+    cout << barcos5 << "  Barco de tamaño cinco" << endl;
+
+    cout << endl;
+
+    cout << "Ingrese el tamaño de su barco: ";
+    cin >> t;
+    t1 = t;
+}
+
+bool comprobarsieltamanodelbarcoesvalido()
+{
+    if (t != 2 && t != 3 && t != 4 && t != 5)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+bool permitirbarco()
+{
+    if (t == 2)
+    {
+        if (barcos2 == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    else if (t == 3)
+    {
+        if (barcos3 == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    else if (t == 4)
+    {
+        if (barcos4 == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    else if (t == 5)
+    {
+        if (barcos5 == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    else
+    {
+        return true;
+    }
+}
+
+bool preguntardondecolocarjugada()
+{
+
+    cout << "Coloque jugada de inicio" << endl;
+    cout << "x: ";
+    cin >> x;
+    cout << "y: ";
+    cin >> y;
+    x = x - 1;
+    y = y - 1;
+    if (x < 10 && x >= 0 && y < 10 && y >= 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+int orientacioncolocarjugada()
+{
+    int orientacion;
+
+    cout << endl
+         << "Orientacion" << endl;
+    cout << "1 = arriba" << endl;
+    cout << "2 = abajo" << endl;
+    cout << "3 = derecha" << endl;
+    cout << "4 = izquierda" << endl;
+
+    cout << "Ingrese la orientacion: ";
+    cin >> orientacion;
+    return orientacion;
+}
+
+bool comprobarsilaorientacionesvalida(int orientacion)
+{
+    int comprobar;
+    if (orientacion == 1)
+    {
+        comprobar = y - t;
+        if (comprobar >= -1)
+        {
+            ya = comprobar;
+            x1 = x;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    else if (orientacion == 2)
+    {
+        comprobar = y + t;
+        if (comprobar <= 10)
+        {
+            ya = comprobar;
+            x1 = x;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else if (orientacion == 3)
+    {
+        comprobar = x + t;
+        if (comprobar <= 10)
+        {
+            x1 = comprobar;
+            ya = y;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else if (orientacion == 4)
+    {
+        comprobar = x - t;
+
+        if (comprobar >= -1)
+        {
+            x1 = comprobar;
+            ya = y;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool comprobarsilascasillasestanocupadas(int orientacion)
+{
+    bool desocupada = true;
+    if (orientacion == 1)
+    {
+        do
+        {
+            ya++;
+            if (matriz[x][ya] == 1)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && ya < y);
+        return desocupada;
+    }
+    else if (orientacion == 2)
+    {
+        do
+        {
+            ya--;
+            if (matriz[x][ya] == 1)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && ya > y);
+        return desocupada;
+    }
+    else if (orientacion == 3)
+    {
+        do
+        {
+            x1--;
+            if (matriz[x1][y] == 1)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && x1 > x);
+        return desocupada;
+    }
+    else if (orientacion == 4)
+    {
+        do
+        {
+            x1++;
+            if (matriz[x1][y] == 1)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && x1 < x);
+        return desocupada;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void colocarbarco(int orientacion)
+{
+    int ficha;
+
+    if (t == 2)
+    {
+        ficha = 2;
+    }
+    else if (t == 3)
+    {
+        if (limitedetres == 1)
+        {
+            ficha = 3;
+            limitedetres--;
+        }
+        else
+        {
+            ficha = 9;
+        }
+    }
+    else if (t == 4)
+    {
+        ficha = 4;
+    }
+    else
+    {
+        ficha = 5;
+    }
+
+    if (orientacion == 1)
+    {
+        while (t > 0)
+        {
+            matriz[x][y] = ficha;
+            y--;
+            t--;
+        }
+        numerodebarcos--;
+    }
+
+    else if (orientacion == 2)
+    {
+        while (t > 0)
+        {
+            matriz[x][y] = ficha;
+            y++;
+            t--;
+        }
+        numerodebarcos--;
+    }
+    else if (orientacion == 3)
+    {
+        while (t > 0)
+        {
+            matriz[x][y] = ficha;
+            x++;
+            t--;
+        }
+        numerodebarcos--;
+    }
+    else if (orientacion == 4)
+    {
+        while (t > 0)
+        {
+            matriz[x][y] = ficha;
+            x--;
+            t--;
+        }
+        numerodebarcos--;
+    }
+}
+
+void conteobarcos()
+{
+    if (t1 == 2)
+    {
+        barcos2--;
+    }
+    else if (t1 == 3)
+    {
+        barcos3--;
+    }
+    else if (t1 == 4)
+    {
+        barcos4--;
+    }
+    else if (t1 == 5)
+    {
+        barcos5--;
+    }
+}
+
+void tableroJ1()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            if (matrizJ1[i][j] != 2 && matrizJ1[i][j] != 3 && matrizJ1[i][j] != 4 && matrizJ1[i][j] != 5 && matrizJ1[i][j] != 9)
+            {
+                matrizJ1[i][j] = 0;
+            }
+        }
+    }
+}
+
+void definirorientacionJ1()
+{
+    srand(time(NULL));
+    orientacionJ1 = 1 + rand() % (5 - 1);
+}
+
+void definirpocicionJ1()
+{
+    if (tamanodelbarcoJ1[pociciontamanoJ1] == 2)
+    {
+        if (orientacionJ1 == 1)
+        {
+            srand(time(NULL));
+            xJ1 = 0 + rand() % (9 - 0);
+            yJ1 = 1 + rand() % (9 - 1);
+        }
+        else if (orientacionJ1 == 2)
+        {
+            xJ1 = 0 + rand() % (9 - 0);
+            yJ1 = 0 + rand() % (8 - 0);
+        }
+        else if (orientacionJ1 == 3)
+        {
+            xJ1 = 0 + rand() % (8 - 0);
+            yJ1 = 0 + rand() % (9 - 0);
+        }
+        else if (orientacionJ1 == 4)
+        {
+            xJ1 = 1 + rand() % (9 - 1);
+            yJ1 = 0 + rand() % (9 - 0);
+        }
+        else
+        {
+        }
+    }
+    else if (tamanodelbarcoJ1[pociciontamanoJ1] == 3)
+    {
+        if (orientacionJ1 == 1)
+        {
+            srand(time(NULL));
+            xJ1 = 0 + rand() % (9 - 0);
+            yJ1 = 2 + rand() % (9 - 2);
+        }
+        else if (orientacionJ1 == 2)
+        {
+            xJ1 = 0 + rand() % (9 - 0);
+            yJ1 = 0 + rand() % (7 - 0);
+        }
+        else if (orientacionJ1 == 3)
+        {
+            xJ1 = 0 + rand() % (7 - 0);
+            yJ1 = 0 + rand() % (9 - 0);
+        }
+        else if (orientacionJ1 == 4)
+        {
+            xJ1 = 2 + rand() % (9 - 2);
+            yJ1 = 0 + rand() % (9 - 0);
+        }
+        else
+        {
+        }
+    }
+    else if (tamanodelbarcoJ1[pociciontamanoJ1] == 4)
+    {
+        if (orientacionJ1 == 1)
+        {
+            srand(time(NULL));
+            xJ1 = 0 + rand() % (9 - 0);
+            yJ1 = 3 + rand() % (9 - 3);
+        }
+        else if (orientacionJ1 == 2)
+        {
+            xJ1 = 0 + rand() % (9 - 0);
+            yJ1 = 0 + rand() % (6 - 0);
+        }
+        else if (orientacionJ1 == 3)
+        {
+            xJ1 = 0 + rand() % (6 - 0);
+            yJ1 = 0 + rand() % (9 - 0);
+        }
+        else if (orientacionJ1 == 4)
+        {
+            xJ1 = 3 + rand() % (9 - 3);
+            yJ1 = 0 + rand() % (9 - 0);
+        }
+        else
+        {
+        }
+    }
+    else if (tamanodelbarcoJ1[pociciontamanoJ1] == 5)
+    {
+        if (orientacionJ1 == 1)
+        {
+            srand(time(NULL));
+            xJ1 = 0 + rand() % (9 - 0);
+            yJ1 = 4 + rand() % (9 - 4);
+        }
+        else if (orientacionJ1 == 2)
+        {
+            xJ1 = 0 + rand() % (9 - 0);
+            yJ1 = 0 + rand() % (5 - 0);
+        }
+        else if (orientacionJ1 == 3)
+        {
+            xJ1 = 0 + rand() % (5 - 0);
+            yJ1 = 0 + rand() % (9 - 0);
+        }
+        else if (orientacionJ1 == 4)
+        {
+            xJ1 = 4 + rand() % (9 - 4);
+            yJ1 = 0 + rand() % (9 - 0);
+        }
+        else
+        {
+        }
+    }
+    else
+    {
+    }
+}
+
+bool comprobarsilascasillasestanocupadasJ1()
+{
+    bool desocupada;
+    int yJ1prueba;
+    int xJ1prueba;
+
+    if (orientacionJ1 == 1)
+    {
+
+        yJ1prueba = yJ1 - tamanodelbarcoJ1[pociciontamanoJ1];
+        do
+        {
+            yJ1prueba++;
+            if (matrizJ1[xJ1][yJ1prueba] == 0)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && yJ1prueba < yJ1);
+        return desocupada;
+    }
+    else if (orientacionJ1 == 2)
+    {
+        int yJ1prueba = yJ1 + tamanodelbarcoJ1[pociciontamanoJ1];
+        do
+        {
+            yJ1prueba--;
+            if (matrizJ1[xJ1][yJ1prueba] == 0)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && yJ1prueba > yJ1);
+        return desocupada;
+    }
+    else if (orientacionJ1 == 3)
+    {
+        xJ1prueba = xJ1 + tamanodelbarcoJ1[pociciontamanoJ1];
+        do
+        {
+            xJ1prueba--;
+            if (matrizJ1[xJ1prueba][yJ1] == 0)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && xJ1prueba > xJ1);
+        return desocupada;
+    }
+    else if (orientacionJ1 == 4)
+    {
+        xJ1prueba = xJ1 - tamanodelbarcoJ1[pociciontamanoJ1];
+        do
+        {
+            xJ1prueba++;
+            if (matrizJ1[xJ1prueba][yJ1] == 0)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && xJ1prueba < xJ1);
+        return desocupada;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void colocarbarcoJ1()
+{
+    int fichas[5] = {2, 3, 9, 4, 5};
+    int tamanodelbarco = tamanodelbarcoJ1[pociciontamanoJ1];
+
+    if (orientacionJ1 == 1)
+    {
+        while (tamanodelbarco > 0)
+        {
+            matrizJ1[xJ1][yJ1] = fichas[pociciontamanoJ1];
+            yJ1--;
+            tamanodelbarco--;
+        }
+        numerodebarcosJ1--;
+    }
+
+    else if (orientacionJ1 == 2)
+    {
+        while (tamanodelbarco > 0)
+        {
+            matrizJ1[xJ1][yJ1] = fichas[pociciontamanoJ1];
+            yJ1++;
+            tamanodelbarco--;
+        }
+        numerodebarcosJ1--;
+    }
+    else if (orientacionJ1 == 3)
+    {
+        while (tamanodelbarco > 0)
+        {
+            matrizJ1[xJ1][yJ1] = fichas[pociciontamanoJ1];
+            xJ1++;
+            tamanodelbarco--;
+        }
+        numerodebarcosJ1--;
+    }
+    else if (orientacionJ1 == 4)
+    {
+        while (tamanodelbarco > 0)
+        {
+            matrizJ1[xJ1][yJ1] = fichas[pociciontamanoJ1];
+            xJ1--;
+            tamanodelbarco--;
+        }
+        numerodebarcosJ1--;
+    }
+}
+
+// Generar tablero 2
+
+void tableroJ2()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            if (matrizJ2[i][j] != 2 && matrizJ2[i][j] != 3 && matrizJ2[i][j] != 4 && matrizJ2[i][j] != 5 && matrizJ2[i][j] != 9)
+            {
+                matrizJ2[i][j] = 0;
+            }
+        }
+    }
+}
+
+void definirorientacionJ2()
+{
+    srand(time(NULL));
+    orientacionJ2 = 1 + rand() % (5 - 1);
+}
+
+void definirpocicionJ2()
+{
+    if (tamanodelbarcoJ2[pociciontamanoJ2] == 2)
+    {
+        if (orientacionJ2 == 1)
+        {
+            srand(time(NULL));
+            xJ2 = 0 + rand() % (9 - 0);
+            yJ2 = 1 + rand() % (9 - 1);
+        }
+        else if (orientacionJ2 == 2)
+        {
+            xJ2 = 0 + rand() % (9 - 0);
+            yJ2 = 0 + rand() % (8 - 0);
+        }
+        else if (orientacionJ2 == 3)
+        {
+            xJ2 = 0 + rand() % (8 - 0);
+            yJ2 = 0 + rand() % (9 - 0);
+        }
+        else if (orientacionJ2 == 4)
+        {
+            xJ2 = 1 + rand() % (9 - 1);
+            yJ2 = 0 + rand() % (9 - 0);
+        }
+        else
+        {
+        }
+    }
+    else if (tamanodelbarcoJ2[pociciontamanoJ2] == 3)
+    {
+        if (orientacionJ2 == 1)
+        {
+            srand(time(NULL));
+            xJ2 = 0 + rand() % (9 - 0);
+            yJ2 = 2 + rand() % (9 - 2);
+        }
+        else if (orientacionJ2 == 2)
+        {
+            xJ2 = 0 + rand() % (9 - 0);
+            yJ2 = 0 + rand() % (7 - 0);
+        }
+        else if (orientacionJ2 == 3)
+        {
+            xJ2 = 0 + rand() % (7 - 0);
+            yJ2 = 0 + rand() % (9 - 0);
+        }
+        else if (orientacionJ2 == 4)
+        {
+            xJ2 = 2 + rand() % (9 - 2);
+            yJ2 = 0 + rand() % (9 - 0);
+        }
+        else
+        {
+        }
+    }
+    else if (tamanodelbarcoJ2[pociciontamanoJ2] == 4)
+    {
+        if (orientacionJ2 == 1)
+        {
+            srand(time(NULL));
+            xJ2 = 0 + rand() % (9 - 0);
+            yJ2 = 3 + rand() % (9 - 3);
+        }
+        else if (orientacionJ2 == 2)
+        {
+            xJ2 = 0 + rand() % (9 - 0);
+            yJ2 = 0 + rand() % (6 - 0);
+        }
+        else if (orientacionJ2 == 3)
+        {
+            xJ2 = 0 + rand() % (6 - 0);
+            yJ2 = 0 + rand() % (9 - 0);
+        }
+        else if (orientacionJ2 == 4)
+        {
+            xJ2 = 3 + rand() % (9 - 3);
+            yJ2 = 0 + rand() % (9 - 0);
+        }
+        else
+        {
+        }
+    }
+    else if (tamanodelbarcoJ2[pociciontamanoJ2] == 5)
+    {
+        if (orientacionJ2 == 1)
+        {
+            srand(time(NULL));
+            xJ2 = 0 + rand() % (9 - 0);
+            yJ2 = 4 + rand() % (9 - 4);
+        }
+        else if (orientacionJ2 == 2)
+        {
+            xJ2 = 0 + rand() % (9 - 0);
+            yJ2 = 0 + rand() % (5 - 0);
+        }
+        else if (orientacionJ2 == 3)
+        {
+            xJ2 = 0 + rand() % (5 - 0);
+            yJ2 = 0 + rand() % (9 - 0);
+        }
+        else if (orientacionJ2 == 4)
+        {
+            xJ2 = 4 + rand() % (9 - 4);
+            yJ2 = 0 + rand() % (9 - 0);
+        }
+        else
+        {
+        }
+    }
+    else
+    {
+    }
+}
+
+bool comprobarsilascasillasestanocupadasJ2()
+{
+    bool desocupada;
+    int yJ2prueba;
+    int xJ2prueba;
+
+    if (orientacionJ2 == 1)
+    {
+
+        yJ2prueba = yJ2 - tamanodelbarcoJ2[pociciontamanoJ2];
+        do
+        {
+            yJ2prueba++;
+            if (matrizJ2[xJ2][yJ2prueba] == 0)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && yJ2prueba < yJ2);
+        return desocupada;
+    }
+    else if (orientacionJ2 == 2)
+    {
+        int yJ2prueba = yJ2 + tamanodelbarcoJ2[pociciontamanoJ2];
+        do
+        {
+            yJ2prueba--;
+            if (matrizJ2[xJ2][yJ2prueba] == 0)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && yJ2prueba > yJ2);
+        return desocupada;
+    }
+    else if (orientacionJ2 == 3)
+    {
+        xJ2prueba = xJ2 + tamanodelbarcoJ2[pociciontamanoJ2];
+        do
+        {
+            xJ2prueba--;
+            if (matrizJ2[xJ2prueba][yJ2] == 0)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && xJ2prueba > xJ2);
+        return desocupada;
+    }
+    else if (orientacionJ2 == 4)
+    {
+        xJ2prueba = xJ2 - tamanodelbarcoJ2[pociciontamanoJ2];
+        do
+        {
+            xJ2prueba++;
+            if (matrizJ2[xJ2prueba][yJ2] == 0)
+            {
+                desocupada = true;
+            }
+            else
+            {
+                desocupada = false;
+            }
+        } while (desocupada == true && xJ2prueba < xJ2);
+        return desocupada;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void colocarbarcoJ2()
+{
+    int fichas[5] = {2, 3, 9, 4, 5};
+    int tamanodelbarco = tamanodelbarcoJ2[pociciontamanoJ2];
+
+    if (orientacionJ2 == 1)
+    {
+        while (tamanodelbarco > 0)
+        {
+            matrizJ2[xJ2][yJ2] = fichas[pociciontamanoJ2];
+            yJ2--;
+            tamanodelbarco--;
+        }
+        numerodebarcosJ2--;
+    }
+
+    else if (orientacionJ2 == 2)
+    {
+        while (tamanodelbarco > 0)
+        {
+            matrizJ2[xJ2][yJ2] = fichas[pociciontamanoJ2];
+            yJ2++;
+            tamanodelbarco--;
+        }
+        numerodebarcosJ2--;
+    }
+    else if (orientacionJ2 == 3)
+    {
+        while (tamanodelbarco > 0)
+        {
+            matrizJ2[xJ2][yJ2] = fichas[pociciontamanoJ2];
+            xJ2++;
+            tamanodelbarco--;
+        }
+        numerodebarcosJ2--;
+    }
+    else if (orientacionJ2 == 4)
+    {
+        while (tamanodelbarco > 0)
+        {
+            matrizJ2[xJ2][yJ2] = fichas[pociciontamanoJ2];
+            xJ2--;
+            tamanodelbarco--;
+        }
+        numerodebarcosJ2--;
+    }
+}
+
+void preguntardondeatacar()
+{
+    char letra;
+    int xatacar2;
+    if (turnodejugador == 1)
+    {
+        if (mododejuego == 1)
+        {
+            gotoxy(50, 22);
+            cout << "Turno jugador";
+        }
+        else
+        {
+            gotoxy(50, 22);
+            cout << "Turno jugador 1";
+        }
+    }
+    else
+    {
+        if (mododejuego == 1)
+        {
+            gotoxy(50, 22);
+            cout << "Turno de PC";
+        }
+        else
+        {
+            gotoxy(50, 22);
+            cout << "Turno jugador 2";
+        }
+    }
+    if (mododejuego == 2 || turnodejugador == 1)
+    {
+        cout << endl;
+        gotoxy(50, 23);
+        cout << "Ataque";
+        cout << endl;
+        do
+        {
+            gotoxy(50, 24);
+            cout << "Coloca un numero: ";
+            cin >> xatacar2;
+            xatacar = xatacar2 - 1;
+            cout << endl;
+            gotoxy(50, 25);
+            cout << "Coloca una letra: ";
+            cin >> letra;
+            if (letra == 'A' || letra == 'a')
+            {
+                yatacar = 0;
+            }
+            else if (letra == 'B' || letra == 'b')
+            {
+                yatacar = 1;
+            }
+            else if (letra == 'C' || letra == 'c')
+            {
+                yatacar = 2;
+            }
+            else if (letra == 'D' || letra == 'd')
+            {
+                yatacar = 3;
+            }
+            else if (letra == 'E' || letra == 'e')
+            {
+                yatacar = 4;
+            }
+            else if (letra == 'F' || letra == 'f')
+            {
+                yatacar = 5;
+            }
+            else if (letra == 'G' || letra == 'g')
+            {
+                yatacar = 6;
+            }
+            else if (letra == 'H' || letra == 'h')
+            {
+                yatacar = 7;
+            }
+            else if (letra == 'I' || letra == 'i')
+            {
+                yatacar = 8;
+            }
+            else if (letra == 'J' || letra == 'j')
+            {
+                yatacar = 9;
+            }
+            else
+            {
+                yatacar = 10;
+            }
+
+        } while (xatacar < 0 || xatacar > 9 || yatacar < 0 || yatacar > 9);
+    }
+}
+
+bool generarnumeroataque()
+{
+    xatacar = 0 + rand() % (9 - 0);
+    yatacar = 0 + rand() % (9 - 0);
+
+    if (matriz[xatacar][yatacar] == 1)
+    {
+        matriz[xatacar][yatacar] = 6;
+        return false;
+    }
+    else if (matriz[xatacar][yatacar] == 2 || matriz[xatacar][yatacar] == 3 || matriz[xatacar][yatacar] == 4 || matriz[xatacar][yatacar] == 5 || matriz[xatacar][yatacar] == 9)
+    {
+        matriz[xatacar][yatacar] = 7;
+        numerodebarcosvivos--;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool atacarBarcos()
+{
+    if (turnodejugador == 1)
+    {
+        if (matrizJ2[xatacar][yatacar] == 0)
+        {
+            matrizJ2[xatacar][yatacar] = 6;
+            return false;
+        }
+        else if (matrizJ2[xatacar][yatacar] == 2 || matrizJ2[xatacar][yatacar] == 3 || matrizJ2[xatacar][yatacar] == 4 || matrizJ2[xatacar][yatacar] == 5 || matrizJ2[xatacar][yatacar] == 9)
+        {
+            matrizJ2[xatacar][yatacar] = 7;
+            numerodebarcosvivosJ2--;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        if (matrizJ1[xatacar][yatacar] == 0)
+        {
+            matrizJ1[xatacar][yatacar] = 6;
+            return false;
+        }
+        else if (matrizJ1[xatacar][yatacar] == 2 || matrizJ1[xatacar][yatacar] == 3 || matrizJ1[xatacar][yatacar] == 4 || matrizJ1[xatacar][yatacar] == 5 || matrizJ2[xatacar][yatacar] == 9)
+        {
+            matrizJ1[xatacar][yatacar] = 7;
+            numerodebarcosvivosJ1--;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+void gotoxy(int x, int y)
+{
+
+    cout << "\033[" << y << ";" << x << "f";
+}
+
+void decirquebarcotiraste()
+{
+    int contador1barco2 = 0;
+    int contador1barco3 = 0;
+    int contador1barco9 = 0;
+    int contador1barco4 = 0;
+    int contador1barco5 = 0;
+
+    int contador2barco2 = 0;
+    int contador2barco3 = 0;
+    int contador2barco9 = 0;
+    int contador2barco4 = 0;
+    int contador2barco5 = 0;
+
+    if (turnodejugador == 2)
+    {
+
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                if (matrizJ1[i][j] == 2)
+                {
+                    contador1barco2++;
+                }
+                else if (matrizJ1[i][j] == 3)
+                {
+                    contador1barco3++;
+                }
+                else if (matrizJ1[i][j] == 9)
+                {
+                    contador1barco9++;
+                }
+                else if (matrizJ1[i][j] == 4)
+                {
+                    contador1barco4++;
+                }
+                else if (matrizJ1[i][j] == 5)
+                {
+                    contador1barco5++;
+                }
+                else
+                {
+                }
+            }
+        }
+        gotoxy(75, 22);
+        cout << "Barcos caidos del jugador 1";
+        if (contador1barco2 == 0)
+        {
+            gotoxy(100, 6);
+            cout << "Tumbaste barco de dos";
+            cout << endl;
+        }
+        if (contador1barco3 == 0)
+        {
+            gotoxy(100, 23);
+            cout << "Tumbaste barco de tres";
+            cout << endl;
+        }
+        if (contador1barco9 == 0)
+        {
+            gotoxy(100, 24);
+            cout << "Tumbaste barco de tres";
+            cout << endl;
+        }
+        if (contador1barco4 == 0)
+        {
+            gotoxy(100, 25);
+            cout << "Tumbaste barco de cuatro";
+            cout << endl;
+        }
+        if (contador1barco5 == 0)
+        {
+            gotoxy(100, 26);
+            cout << "Tumbaste barco de cinco";
+            cout << endl;
+        }
+    }
+    else
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                if (matrizJ2[i][j] == 2)
+                {
+                    contador2barco2++;
+                }
+                else if (matrizJ2[i][j] == 3)
+                {
+                    contador2barco3++;
+                }
+                else if (matrizJ2[i][j] == 9)
+                {
+                    contador2barco9++;
+                }
+                else if (matrizJ2[i][j] == 4)
+                {
+                    contador2barco4++;
+                }
+                else if (matrizJ2[i][j] == 5)
+                {
+                    contador2barco5++;
+                }
+                else
+                {
+                }
+            }
+        }
+        gotoxy(100, 22);
+        cout << "Barcos caidos del jugador 2";
+        if (contador2barco2 == 0)
+        {
+            gotoxy(100, 23);
+            cout << "Tumbaste barco de dos";
+            cout << endl;
+        }
+        if (contador2barco3 == 0)
+        {
+            gotoxy(100, 24);
+            cout << "Tumbaste barco de tres";
+            cout << endl;
+        }
+        if (contador2barco9 == 0)
+        {
+            gotoxy(100, 25);
+            cout << "Tumbaste barco de tres";
+            cout << endl;
+        }
+        if (contador2barco4 == 0)
+        {
+            gotoxy(100, 26);
+            cout << "Tumbaste barco de cuatro";
+            cout << endl;
+        }
+        if (contador2barco5 == 0)
+        {
+            gotoxy(100, 27);
+            cout << "Tumbaste barco de cinco";
+            cout << endl;
+        }
+    }
+}
+
+void menu()
+{
+    for (int x = 50; x > 10; x--)
+    {
+        system("clear");
+        gotoxy(x, 1);
+        cout << "              __'__     __'__      __'__" << endl;
+        gotoxy(x, 2);
+        cout << "             /    /    /    /     /    /" << endl;
+        gotoxy(x, 3);
+        cout << "            /____/    /____/     /____/  " << endl;
+        gotoxy(x, 4);
+        cout << "          / ___|___   ___|___    ___|___ " << endl;
+        gotoxy(x, 5);
+        cout << "        // (      (  (      (   (      (" << endl;
+        gotoxy(x, 6);
+        cout << "      / /  (______(  (______(   (______(" << endl;
+        gotoxy(x, 7);
+        cout << "    /  /   ____|_____ ___|______ ____|_____" << endl;
+        gotoxy(x, 8);
+        cout << "   /   /   /         //         //         /" << endl;
+        gotoxy(x, 9);
+        cout << " /    /   |         ||         ||         |" << endl;
+        gotoxy(x, 10);
+        cout << "/____/     (         ((        ((         (" << endl;
+        gotoxy(x, 11);
+        cout << "    (      (_________((_________((_________((" << endl;
+        gotoxy(x, 12);
+        cout << "    (         |          |         |" << endl;
+        gotoxy(x, 13);
+        cout << "     (________|__________|_________|________/" << endl;
+        gotoxy(x, 14);
+        cout << "       (|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_/|" << endl;
+
+        gotoxy(x, 15);
+        cout << "\033[0;34m"
+             << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+             << "\033[0m" << endl;
+        gotoxy(x, 16);
+        cout << "\033[0;34m"
+             << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+             << "\033[0m" << endl;
+        gotoxy(40, 18);
+        cout << "\033[1;37m"
+             << "░ ░ ░ █░░ █▀█ ▄▀█ █▀▄ █ █▄░█ █▀▀   █▀▀ ▄▀█ █▀▄▀█ █▀▀ ░ ░ ░"
+             << "\033[0m" << endl;
+        gotoxy(40, 19);
+        cout << "\033[1;37m"
+             << "▄ ▄ ▄ █▄▄ █▄█ █▀█ █▄▀ █ █░▀█ █▄█   █▄█ █▀█ █░▀░█ ██▄ ▄ ▄ ▄"
+             << "\033[0m" << endl;
+        usleep(100000);
+        system("clear");
+    }
+    gotoxy(20, 1);
+    cout << "\033[0;33m"
+         << "██████╗░░█████╗░████████╗████████╗██╗░░░░░███████╗  ░██████╗██╗░░██╗██╗██████╗░"
+         << "\033[0m" << endl;
+    gotoxy(20, 2);
+    cout << "\033[0;33m"
+         << "██╔══██╗██╔══██╗╚══██╔══╝╚══██╔══╝██║░░░░░██╔════╝  ██╔════╝██║░░██║██║██╔══██╗"
+         << "\033[0m" << endl;
+    gotoxy(20, 3);
+    cout << "\033[0;33m"
+         << "██████╦╝███████║░░░██║░░░░░░██║░░░██║░░░░░█████╗░░  ╚█████╗░███████║██║██████╔╝"
+         << "\033[0m" << endl;
+    gotoxy(20, 4);
+    cout << "\033[0;33m"
+         << "██╔══██╗██╔══██║░░░██║░░░░░░██║░░░██║░░░░░██╔══╝░░  ░╚═══██╗██╔══██║██║██╔═══╝░"
+         << "\033[0m" << endl;
+    gotoxy(20, 5);
+    cout << "\033[0;33m"
+         << "██████╦╝██║░░██║░░░██║░░░░░░██║░░░███████╗███████╗  ██████╔╝██║░░██║██║██║░░░░░"
+         << "\033[0m" << endl;
+    gotoxy(20, 6);
+    cout << "\033[0;33m"
+         << "╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░░░░╚═╝░░░╚══════╝╚══════╝  ╚═════╝░╚═╝░░╚═╝╚═╝╚═╝░░░░░"
+         << "\033[0m" << endl;
+
+    gotoxy(50, 8);
+    cout << "\033[1;34m"
+         << "▒█▀▄▀█ ▒█▀▀▀ ▒█▄░▒█ ▒█░▒█"
+         << "\033[0m" << endl;
+    gotoxy(50, 9);
+    cout << "\033[1;34m"
+         << "▒█▒█▒█ ▒█▀▀▀ ▒█▒█▒█ ▒█░▒█ "
+         << "\033[0m" << endl;
+    gotoxy(50, 10);
+    cout << "\033[1;34m"
+         << "▒█░░▒█ ▒█▄▄▄ ▒█░░▀█ ░▀▄▄▀"
+         << "\033[0m" << endl;
+
+    gotoxy(50, 13);
+    cout << "１．－ＳＩＮＧＬＥ ＰＬＡＹＥＲ" << endl;
+    gotoxy(50, 15);
+    cout << "２．－ＭＵＬＴＩＰＬＡＹＥＲ" << endl;
+    gotoxy(50, 17);
+    cout << "ＣＨＯＯＳＥ ＴＨＥ ＧＡＭＥ ＭＯＤＥ：" << endl;
+    cin >> mododejuego;
+}
