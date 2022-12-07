@@ -724,14 +724,57 @@ bool permitirbarco()
 
 bool preguntardondecolocarjugada()
 {
+    char letra;
 
-    cout << "Coloque jugada de inicio" << endl;
-    cout << "x: ";
+    cout<<"\033[1;37m"<<"𝐶𝐻𝑂𝑂𝑆𝐸 𝐴 𝑁𝑈𝑀𝐵𝐸𝑅: "<<"\033[0m";
     cin >> x;
-    cout << "y: ";
-    cin >> y;
+    cout<<"\033[1;37m"<<"𝐶𝐻𝑂𝑂𝑆𝐸 𝐴 𝐿𝐸𝑇𝑇𝐸𝑅: "<<"\033[0m";
+    cin >> letra;
+    if (letra == 'A' || letra == 'a')
+    {
+         y = 0;
+    }
+    else if (letra == 'B' || letra == 'b')
+    {
+        y = 1;
+    }
+    else if (letra == 'C' || letra == 'c')
+    {
+        y = 2;
+    }
+            else if (letra == 'D' || letra == 'd')
+            {
+                y = 3;
+            }
+            else if (letra == 'E' || letra == 'e')
+            {
+                y = 4;
+            }
+            else if (letra == 'F' || letra == 'f')
+            {
+                y = 5;
+            }
+            else if (letra == 'G' || letra == 'g')
+            {
+                y = 6;
+            }
+            else if (letra == 'H' || letra == 'h')
+            {
+                y = 7;
+            }
+            else if (letra == 'I' || letra == 'i')
+            {
+                y = 8;
+            }
+            else if (letra == 'J' || letra == 'j')
+            {
+                y = 9;
+            }
+            else
+            {
+                y = 10;
+            }
     x = x - 1;
-    y = y - 1;
     if (x < 10 && x >= 0 && y < 10 && y >= 0)
     {
         return true;
