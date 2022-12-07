@@ -98,6 +98,7 @@ int main()
     bool desocupadaJ2;
 
     menu();
+    system("clear");
     do
     {
         // Eleccion de barcos jugador
@@ -142,7 +143,7 @@ int main()
                         }
                     }
                 }
-                system("cls");
+                system("clear");
             } while (numerodebarcos > 0);
             // imprimirtablero();
             CrearTablero();
@@ -194,7 +195,7 @@ int main()
                         turnodejugador = 1;
                     }
                 }
-                system("cls");
+                system("clear");
                 numerodetablero = 3;
                 cout << endl;
                 cout << endl;
@@ -285,7 +286,7 @@ int main()
                         turnodejugador = 1;
                     }
                 }
-                system("cls");
+                system("clear");
                 numerodetablero = 1;
                 cout << endl;
                 cout << endl;
@@ -300,7 +301,7 @@ int main()
                 CrearTablero();
                 decirquebarcotiraste();
             } while (numerodebarcosvivosJ1 > 0 && numerodebarcosvivosJ2 > 0);
-            system("cls");
+            system("clear");
             if (numerodebarcosvivosJ1 < numerodebarcosvivosJ2)
             {
                 cout << endl;
@@ -1698,7 +1699,7 @@ void menu()
 {
     for (int x = 50; x > 10; x--)
     {
-        system("cls");
+        system("clear");
         gotoxy(x, 1);
         cout << "              __'__     __'__      __'__" << endl;
         gotoxy(x, 2);
@@ -1745,7 +1746,7 @@ void menu()
              << "▄ ▄ ▄ █▄▄ █▄█ █▀█ █▄▀ █ █░▀█ █▄█   █▄█ █▀█ █░▀░█ ██▄ ▄ ▄ ▄"
              << "\033[0m" << endl;
         usleep(100000);
-        system("cls");
+        system("clear");
     }
     gotoxy(20, 1);
     cout << "\033[0;33m"
@@ -1791,5 +1792,6 @@ void menu()
     cout << "２．－ＭＵＬＴＩＰＬＡＹＥＲ" << endl;
     gotoxy(50, 17);
     cout << "ＣＨＯＯＳＥ ＴＨＥ ＧＡＭＥ ＭＯＤＥ：" << endl;
+    gotoxy(90, 17);
     cin >> mododejuego;
 }
