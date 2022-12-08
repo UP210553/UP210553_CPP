@@ -240,6 +240,16 @@ int main()
                 CrearTablero();
 
             } while (numerodebarcosvivos > 0 && numerodebarcosvivosJ2 > 0);
+            system("clear");
+            if (numerodebarcosvivos < numerodebarcosvivosJ2)
+            {
+                cout << endl;
+                cout << "You win";
+            }
+            else {
+                cout << endl;
+                cout << "You win";
+            }
         }
         else if (mododejuego == 2)
         {
