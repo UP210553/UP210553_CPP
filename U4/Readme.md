@@ -79,27 +79,48 @@
 ># __CODE EXECUTION AND EXPLANATION__</h4>
 
 <h2 align="center">
-<img alt="ERROR" height="500" src="./Images_U4/0.jpg"/></h2>
 
-<img alt="ERROR" height="500" src="./Images_U4/1.jpg"/></h2>
+<img alt="ERROR" height="500" src="./Images_U4/0.png"/></h2>
 
-<img alt="ERROR" height="500" src="./Images_U4/2.jpg"/></h2>
+<h2 align="center">
 
-<img alt="ERROR" height="500" src="./Images_U4/3.jpg"/></h2>
+<img alt="ERROR" height="500" src="./Images_U4/1.png"/></h2>
 
-<img alt="ERROR" height="500" src="./Images_U4/4.jpg"/></h2>
+<h2 align="center">
 
-<img alt="ERROR" height="500" src="./Images_U4/5.jpg"/></h2>
+<img alt="ERROR" height="500" src="./Images_U4/2.ppng"/></h2>
 
-<img alt="ERROR" height="500" src="./Images_U4/6.jpg"/></h2>
+<h2 align="center">
 
-<img alt="ERROR" height="500" src="./Images_U4/7.jpg"/></h2>
+<img alt="ERROR" height="500" src="./Images_U4/3.png"/></h2>
 
-<img alt="ERROR" height="500" src="./Images_U4/8.jpg"/></h2>
+<h2 align="center">
 
-<img alt="ERROR" height="500" src="./Images_U4/9.jpg"/></h2>
+<img alt="ERROR" height="500" src="./Images_U4/4.png"/></h2>
 
-<img alt="ERROR" height="500" src="./Images_U4/10.jpg"/></h2>
+<h2 align="center">
+
+<img alt="ERROR" height="500" src="./Images_U4/5.png"/></h2>
+
+<h2 align="center">
+
+<img alt="ERROR" height="500" src="./Images_U4/6.png"/></h2>
+
+<h2 align="center">
+
+<img alt="ERROR" height="500" src="./Images_U4/7.png"/></h2>
+
+<h2 align="center">
+
+<img alt="ERROR" height="500" src="./Images_U4/8.png"/></h2>
+
+<h2 align="center">
+
+<img alt="ERROR" height="500" src="./Images_U4/9.png"/></h2>
+
+<h2 align="center">
+
+<img alt="ERROR" height="500" src="./Images_U4/10.png"/></h2>
 
 <div align="right">
 
