@@ -8,8 +8,9 @@
 <h2 align="center">
 <img alt="ERROR" height="300" src="./Images_U4/BSHImage.jpg"/></h2>
 
-># **INDEX** 
+># **INDEX**
 >## [A) Instructions for execution and use](#instruction-for-execution-and-use)
+>## [B) FLOWCHART](#flowchart)
 >## [B) Code execution and explanation](#code-execution-and-explanation)
 >## [C) Conclusions of the exercise](#conclusions-of-the-excercise)
 
@@ -18,8 +19,11 @@
 ># **INSTRUCTION FOR EXECUTION AND USE**</h4>
 
 >## **General considerations:**
-
+>### 1. The boards in multiplayer game mode are random and you don't know where are your ships
+>### 2. In single player mode the computer always attack automatically
+>### 3. The programm its a little bit slow when the boards are build but no too much
 >## **Possible ERRORS**
+>## 1. When the machine ask you for a letter to position, if you enter a number the programm crash
 
 >## **HOW TO USE**
 >>## **If you use Windows follow this steps**
@@ -78,42 +82,54 @@
 
 ># __CODE EXECUTION AND EXPLANATION__</h4>
 
+># SINGLE PLAYER
+>### 1. The menu and choose single player 
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/0.png"/></h2>
 
+>### 2. You decide where do you like to put your ships
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/1.png"/></h2>
 
+>### 3. The PC turn down a ship of us
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/2.png"/></h2>
 
+>### 4. You turn down some ships of the PC
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/3.png"/></h2>
 
+>### 5. You enter the last play 
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/4.png"/></h2>
 
+>### 6. YOU WIN
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/5.png"/></h2>
 
+>## MULTIPLAYER
+>### 1. The menu and choose multiplayer mode
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/7.png"/></h2>
 
+>### 2. Player 1 turn down one ship
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/8.png"/></h2>
 
+>### 3. Player 2 turn down a lot of ships
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/9.png"/></h2>
 
+>### 4. Player 2 wins
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/10.png"/></h2>
@@ -125,7 +141,7 @@
 <h4 align="center">
 
 ># **CONCLUSIONS OF THE EXCERCISE**</h4>
-
+>## To program the "Battle Ship" we put into practice all the knowledge obtained during the semester, we used functions, local variables, global variables, vectors and more. Doing this work was a very big challenge but it was not so complicated because we already had previous knowledge. It was a job very similar to the "Cat", however, it was more complex because the matrix is larger and each coordinate could obtain more than one value. The most complicated thing to do was to create artificial intelligence because it had to meet several conditions to be able to perform an attack, however, it was simpler than the artificial intelligence of the cat. 
 
 <div align="right">
 
