@@ -838,15 +838,15 @@ void CrearTablero()
 
 void elegirbarcos()
 {
-    cout << "Menu de barcos" << endl;
-    cout << barcos2 << "  Barco de tamaño dos" << endl;
-    cout << barcos3 << "  Barco de tamaño tres" << endl;
-    cout << barcos4 << "  Barco de tamaño cuatro" << endl;
-    cout << barcos5 << "  Barco de tamaño cinco" << endl;
+    cout << "\033[1;31m"<< "𝘗𝘓𝘈𝘊𝘌 𝘠𝘖𝘜𝘙 𝘚𝘏𝘐𝘗𝘚" << "\033[0m"<< endl;
+    cout << barcos2 << "\033[0;37m"<< "  𝑩𝑶𝑨𝑻 𝑺𝑰𝒁𝑬 𝑻𝑾𝑶"<< "\033[0m" << endl;
+    cout << barcos3 << "\033[0;37m"<< "  𝑩𝑶𝑨𝑻 𝑶𝑭 𝑺𝑰𝒁𝑬 𝑻𝑯𝑹𝑬𝑬"<< "\033[0m" << endl;
+    cout << barcos4 << "\033[0;37m"<< "  𝑩𝑶𝑨𝑻 𝑶𝑭 𝑺𝑰𝒁𝑬 𝑭𝑶𝑼𝑹" << "\033[0m"<< endl;
+    cout << barcos5 << "\033[0;37m"<< "  𝑩𝑶𝑨𝑻 𝑶𝑭 𝑺𝑰𝒁𝑬 𝑭𝑰𝑽𝑬" << "\033[0m"<< endl;
 
     cout << endl;
 
-    cout << "Ingrese el tamaño de su barco: ";
+    cout << "\033[1;33m"<< "𝘌𝘕𝘛𝘌𝘙 𝘛𝘏𝘌 𝘚𝘐𝘡𝘌 𝘖𝘍 𝘛𝘏𝘌 𝘉𝘖𝘈𝘛:"<< "\033[0m" ;
     cin >> t;
     t1 = t;
 }
@@ -919,11 +919,11 @@ bool preguntardondecolocarjugada()
 {
     char letra;
 
-    cout << "\033[1;37m"
+    cout << "\033[0;37m"
          << "𝐶𝐻𝑂𝑂𝑆𝐸 𝐴 𝑁𝑈𝑀𝐵𝐸𝑅: "
          << "\033[0m";
     cin >> x;
-    cout << "\033[1;37m"
+    cout << "\033[0;37m"
          << "𝐶𝐻𝑂𝑂𝑆𝐸 𝐴 𝐿𝐸𝑇𝑇𝐸𝑅: "
          << "\033[0m";
     cin >> letra;
@@ -987,13 +987,13 @@ int orientacioncolocarjugada()
     int orientacion;
 
     cout << endl
-         << "Orientacion" << endl;
-    cout << "1 = arriba" << endl;
-    cout << "2 = abajo" << endl;
-    cout << "3 = derecha" << endl;
-    cout << "4 = izquierda" << endl;
+         << "\033[1;31m"<< "𝑂𝑅𝐼𝐸𝑁𝑇𝐴𝑇𝐼𝑂𝑁"<< "\033[0m" << endl;
+    cout << "\033[0;37m"<<"1=𝑼𝑷"<< "\033[0m" << endl;
+    cout << "\033[0;37m"<< "2=𝑫𝑶𝑾𝑵"<< "\033[0m" << endl;
+    cout << "\033[0;37m"<< "3=𝑹𝑰𝑮𝑯𝑻"<< "\033[0m" << endl;
+    cout << "\033[0;37m"<< "4=𝑳𝑬𝑭𝑻"<< "\033[0m" << endl;
 
-    cout << "Ingrese la orientacion: ";
+    cout<< "\033[1;33m"<< "𝐸𝑁𝑇𝐸𝑅 𝑇𝐻𝐸 𝑂𝑅𝐼𝐸𝑁𝑇𝐴𝑇𝐼𝑂𝑁: "<< "\033[0m" ;
     cin >> orientacion;
     return orientacion;
 }
