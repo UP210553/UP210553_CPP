@@ -105,7 +105,7 @@ int main()
     do
     {
         menu();
-        system("clear");
+        system("cls");
         // Eleccion de barcos jugador
         if (mododejuego == 1)
         {
@@ -153,7 +153,7 @@ int main()
                         }
                     }
                 }
-                system("clear");
+                system("cls");
             } while (numerodebarcos > 0);
             // imprimirtablero();
             cout << endl;
@@ -221,7 +221,7 @@ int main()
                         turnodejugador = 1;
                     }
                 }
-                system("clear");
+                system("cls");
                 numerodetablero = 3;
                 cout << endl;
                 cout << endl;
@@ -238,9 +238,10 @@ int main()
                      << "\033[0m" << endl;
                 cout << endl;
                 CrearTablero();
+                decirquebarcotiraste();
 
             } while (numerodebarcosvivos > 0 && numerodebarcosvivosJ2 > 0);
-            system("clear");
+            system("cls");
             if (numerodebarcosvivos < numerodebarcosvivosJ2)
             {
                 cout << endl;
@@ -330,7 +331,7 @@ int main()
                         turnodejugador = 1;
                     }
                 }
-                system("clear");
+                system("cls");
                 numerodetablero = 1;
                 cout << endl;
                 cout << endl;
@@ -349,7 +350,7 @@ int main()
                 CrearTablero();
                 decirquebarcotiraste();
             } while (numerodebarcosvivosJ1 > 0 && numerodebarcosvivosJ2 > 0);
-            system("clear");
+            system("cls");
             if (numerodebarcosvivosJ1 < numerodebarcosvivosJ2)
             {
                 cout << endl;
@@ -2119,7 +2120,7 @@ void menu()
 {
     for (int x = 50; x > 10; x--)
     {
-        system("clear");
+        system("cls");
         gotoxy(x, 1);
         cout << "              __'__     __'__      __'__" << endl;
         gotoxy(x, 2);
@@ -2166,7 +2167,7 @@ void menu()
              << "▄ ▄ ▄ █▄▄ █▄█ █▀█ █▄▀ █ █░▀█ █▄█   █▄█ █▀█ █░▀░█ ██▄ ▄ ▄ ▄"
              << "\033[0m" << endl;
         usleep(100000);
-        system("clear");
+        system("cls");
     }
     gotoxy(20, 1);
     cout << "\033[0;33m"
