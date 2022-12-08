@@ -1918,7 +1918,7 @@ bool atacarBarcos()
             matrizJ1[xatacar][yatacar] = 6;
             return false;
         }
-        else if (matrizJ1[xatacar][yatacar] == 2 || matrizJ1[xatacar][yatacar] == 3 || matrizJ1[xatacar][yatacar] == 4 || matrizJ1[xatacar][yatacar] == 5 || matrizJ2[xatacar][yatacar] == 9)
+        else if (matrizJ1[xatacar][yatacar] == 2 || matrizJ1[xatacar][yatacar] == 3 || matrizJ1[xatacar][yatacar] == 4 || matrizJ1[xatacar][yatacar] == 5 || matrizJ1[xatacar][yatacar] == 9)
         {
             matrizJ1[xatacar][yatacar] = 7;
             numerodebarcosvivosJ1--;
