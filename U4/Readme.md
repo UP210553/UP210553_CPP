@@ -88,7 +88,7 @@
 
 <h2 align="center">
 
-<img alt="ERROR" height="500" src="./Images_U4/2.ppng"/></h2>
+<img alt="ERROR" height="500" src="./Images_U4/2.png"/></h2>
 
 <h2 align="center">
 
@@ -101,10 +101,6 @@
 <h2 align="center">
 
 <img alt="ERROR" height="500" src="./Images_U4/5.png"/></h2>
-
-<h2 align="center">
-
-<img alt="ERROR" height="500" src="./Images_U4/6.png"/></h2>
 
 <h2 align="center">
 
